@@ -38,8 +38,9 @@ nvim
 │       ├── harpoon.lua   # Quick file navigation
 │       ├── undotree.lua  # Undo history visualizer
 │       ├── lazygit.lua   # Git integration
+│       ├── blink-cmp.lua # Autocompletion engine
 │       ├── mason.lua     # LSP/tool installer
-│       ├── mason-lspconfig.lua # LSP auto-config
+│       ├── mason-lspconfig.lua # LSP auto-config & blink.cmp integration
 │       ├── lspconfig.lua # LSP keymaps & setup
 │       └── nvim-treesitter.lua # Syntax highlighting & indentation
 ```
@@ -80,6 +81,42 @@ This configuration uses a **two-layer indentation system**:
 | `<leader>pb` | Find buffers |
 | `<Ctrl-p>` | Find git tracked files |
 | `<leader>ps` | Grep search (prompt for search term) |
+
+### Blink Completion (blink.cmp)
+**Performant, batteries-included autocompletion plugin** with fuzzy matching and multiple sources.
+
+Completions appear automatically as you type with intelligent ranking and typo resistance.
+
+#### Keymaps (preset = 'enter')
+
+**In Insert Mode:**
+| Keymap | Description |
+|--------|-------------|
+| `<CR>` (Enter) | Accept selected completion |
+| `<C-Space>` | Open completion menu / Show documentation |
+| `<C-n>` or `↓` | Select next item |
+| `<C-p>` or `↑` | Select previous item |
+| `<C-e>` | Close completion menu |
+| `<C-k>` | Toggle signature help |
+
+**Completion Sources:**
+- **LSP** - Language server suggestions (functions, variables, types)
+- **Path** - File system paths
+- **Snippets** - Code snippets from friendly-snippets
+- **Buffer** - Words from open buffers
+
+**Features:**
+- ⚡ **High performance** - Rust-based fuzzy matcher (0.5-4ms)
+- 🎯 **Typo resistant** - Fuzzy matching with frecency and proximity bonus
+- 📚 **Automatic documentation** - Shows popup with details and examples
+- 🔧 **LSP integration** - Full LSP completion support
+- 📦 **Batteries included** - Works out of the box with sensible defaults
+- 🎨 **Ghost text** - Inline preview of completions
+
+**Commands:**
+- `:BlinkCmpShow` - Manually trigger completion
+- `:BlinkCmpHide` - Hide completion menu
+- `:BlinkCmpToggle` - Toggle completion
 
 ### Harpoon (Quick File Navigation)
 Mark and quickly navigate between frequently used files.
