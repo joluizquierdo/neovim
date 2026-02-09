@@ -36,6 +36,7 @@ nvim
 │       ├── kanagawa.lua  # Colorscheme
 │       ├── telescope.lua # Fuzzy finder
 │       ├── harpoon.lua   # Quick file navigation
+│       ├── undotree.lua  # Undo history visualizer
 │       └── nvim-treesitter.lua # Syntax highlighting
 ```
 
@@ -73,6 +74,19 @@ Mark and quickly navigate between frequently used files.
 - `d` or `dd` - Delete mark
 - Visual select + move - Reorder marks
 - `q` or `<Esc>` - Close and save
+
+### Undotree (Undo History)
+Visualize and navigate your undo history as a tree.
+
+| Keymap | Description |
+|--------|-------------|
+| `<leader>u` | Toggle undotree panel |
+
+**In undotree panel:**
+- `j/k` - Navigate through undo history
+- `Enter` - Restore to selected state
+- View timestamps and change previews
+- `q` - Close panel
 
 ### TreeSitter (Syntax Highlighting)
 | Command | Description |
