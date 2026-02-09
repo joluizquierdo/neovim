@@ -41,7 +41,7 @@ nvim
 │       ├── mason.lua     # LSP/tool installer
 │       ├── mason-lspconfig.lua # LSP auto-config
 │       ├── lspconfig.lua # LSP keymaps & setup
-│       └── nvim-treesitter.lua # Syntax highlighting
+│       └── nvim-treesitter.lua # Syntax highlighting & indentation
 ```
 
 **Leader Key:** `Space`
@@ -49,6 +49,27 @@ nvim
 **Core Settings:**
 - Tab width: 4 spaces
 - Expand tabs: enabled (spaces instead of tabs)
+- Smart indent: enabled (basic auto-indentation)
+- TreeSitter indent: enabled (language-aware auto-indentation)
+
+### How Indentation Works
+
+This configuration uses a **two-layer indentation system**:
+
+1. **`smartindent`** (lua/config/options.lua) - Basic C-like auto-indentation
+   - Adds indent after `{`, `if`, `for`, `while`, etc.
+   - Removes indent when typing `}`
+   - Fast fallback for languages without TreeSitter support
+
+2. **TreeSitter indentation** (lua/plugins/nvim-treesitter.lua) - Advanced language-aware
+   - Uses syntax tree analysis for accurate indentation
+   - Understands language-specific syntax (Python blocks, JSX, etc.)
+   - Automatically enabled when TreeSitter parser is available
+   - Falls back to `smartindent` when parser is not installed
+
+**Configuration files:**
+- `lua/config/options.lua` - Tab/indent settings and `smartindent`
+- `lua/plugins/nvim-treesitter.lua` - TreeSitter indent via autocmd
 
 ## Plugins
 
@@ -131,7 +152,9 @@ Visualize and navigate your undo history as a tree.
 - View timestamps and change previews
 - `q` - Close panel
 
-### TreeSitter (Syntax Highlighting)
+### TreeSitter (Syntax Highlighting & Indentation)
+Provides advanced syntax highlighting and language-aware auto-indentation.
+
 | Command | Description |
 |---------|-------------|
 | `:InspectTree` | Show syntax tree for current buffer |
@@ -141,6 +164,12 @@ Visualize and navigate your undo history as a tree.
 
 **Installed Parsers:** lua, python, go, typescript, javascript, bash, zsh, html, helm, terraform, dockerfile, json, yaml, vim, vimdoc
 
+**Indentation Features:**
+- Automatically enables TreeSitter-based indentation for files with available parsers
+- Falls back to `smartindent` for languages without TreeSitter parsers
+- Respects your tab settings (4 spaces per indent level)
+- Use `=` in visual mode or `gg=G` to auto-indent entire file
+
 ### Kanagawa (Colorscheme)
 Active colorscheme. Auto-loads on startup.
 
@@ -149,6 +178,50 @@ Active colorscheme. Auto-loads on startup.
 |--------|-------------|
 | `<leader>pv` | Open file explorer (netrw) |
 | `<leader>qq` | Quit all windows |
+
+## Configuration Options
+
+All vim options are configured in `lua/config/options.lua`:
+
+### Display Options
+| Option | Value | Description |
+|--------|-------|-------------|
+| `nu` | `true` | Enable line numbers |
+| `relativenumber` | `true` | Show relative line numbers |
+| `wrap` | `false` | Don't wrap long lines |
+| `termguicolors` | `true` | Enable 24-bit RGB colors |
+| `scrolloff` | `15` | Keep 15 lines visible above/below cursor |
+| `colorcolumn` | `"80"` | Show vertical line at column 80 |
+
+### Indentation Options
+| Option | Value | Description |
+|--------|-------|-------------|
+| `tabstop` | `4` | Display tabs as 4 spaces wide |
+| `shiftwidth` | `4` | Indent by 4 spaces with `>`, `<`, `=` |
+| `softtabstop` | `4` | Tab/Backspace moves 4 spaces in insert mode |
+| `expandtab` | `true` | Insert spaces instead of tab character |
+| `smartindent` | `true` | Enable smart auto-indentation (C-like) |
+
+**Note:** TreeSitter provides advanced language-aware indentation on top of these settings.
+
+### File Management Options
+| Option | Value | Description |
+|--------|-------|-------------|
+| `swapfile` | `false` | Disable swap files (.swp) |
+| `backup` | `false` | Disable backup files (~) |
+| `undofile` | `true` | Enable persistent undo history |
+| `undodir` | `~/.vim/undodir` | Directory for undo history files |
+
+### Search Options
+| Option | Value | Description |
+|--------|-------|-------------|
+| `hlsearch` | `false` | Don't highlight all search matches |
+| `incsearch` | `true` | Show matches incrementally while typing |
+
+### Performance Options
+| Option | Value | Description |
+|--------|-------|-------------|
+| `updatetime` | `50` | Write swap/trigger events after 50ms (faster LSP updates) |
 
 ## Useful Commands
 
@@ -180,7 +253,7 @@ return {
 
 To add support for a new language, you **must** complete both steps below:
 
-### Step 1: Add TreeSitter Parser (Required for Syntax Highlighting)
+### Step 1: Add TreeSitter Parser (Required for Syntax Highlighting & Indentation)
 
 **1a.** Find the parser name for your language at [https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
 ](https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
@@ -196,7 +269,9 @@ treesitter.install({
 })
 ```
 
-Restart Neovim and the parser will install automatically.
+**1c.** Restart Neovim and the parser will install automatically.
+
+**Result:** You'll get syntax highlighting and TreeSitter-based indentation for that language.
 
 ### Step 2: Add LSP Server (Required for IDE Features)
 
