@@ -71,6 +71,7 @@ Active colorscheme. Auto-loads on startup.
 | Keymap | Description |
 |--------|-------------|
 | `<leader>pv` | Open file explorer (netrw) |
+| `<leader>qq` | Quit all windows |
 
 ## Useful Commands
 
