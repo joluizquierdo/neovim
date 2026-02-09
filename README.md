@@ -35,6 +35,7 @@ nvim
 │   └── plugins/
 │       ├── kanagawa.lua  # Colorscheme
 │       ├── telescope.lua # Fuzzy finder
+│       ├── harpoon.lua   # Quick file navigation
 │       └── nvim-treesitter.lua # Syntax highlighting
 ```
 
@@ -53,6 +54,25 @@ nvim
 | `<leader>pb` | Find buffers |
 | `<Ctrl-p>` | Find git tracked files |
 | `<leader>ps` | Grep search (prompt for search term) |
+
+### Harpoon (Quick File Navigation)
+Mark and quickly navigate between frequently used files.
+
+| Keymap | Description |
+|--------|-------------|
+| `<leader>ha` | Add current file to Harpoon |
+| `<leader>h` | List Harpoon marks in Telescope (read-only) |
+| `<leader>he` | Edit Harpoon marks (manage menu) |
+| `<leader>1-4` | Jump to Harpoon file 1-4 |
+| `<leader>hp` | Previous Harpoon file |
+| `<leader>hn` | Next Harpoon file |
+
+**Managing marks (in edit menu with `<leader>he`):**
+- `j/k` or arrows - Navigate
+- `Enter` - Open file
+- `d` or `dd` - Delete mark
+- Visual select + move - Reorder marks
+- `q` or `<Esc>` - Close and save
 
 ### TreeSitter (Syntax Highlighting)
 | Command | Description |
@@ -74,6 +94,13 @@ Active colorscheme. Auto-loads on startup.
 | `<leader>qq` | Quit all windows |
 
 ## Useful Commands
+
+**Netrw (File Explorer):**
+- `<Ctrl-L>` - Refresh file listing
+- `%` - Create new file
+- `d` - Create new directory
+- `D` - Delete file/directory
+- `-` - Go up one directory
 
 ```vim
 :Lazy               " Open lazy.nvim plugin manager UI
