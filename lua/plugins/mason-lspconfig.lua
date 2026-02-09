@@ -13,6 +13,7 @@ return {
                 'pyright',       -- Python
                 'ts_ls',         -- TypeScript/JavaScript
                 'gopls',         -- Go
+                'rust_analyzer', -- Rust
                 'terraformls',   -- Terraform
                 'yamlls',        -- YAML
                 'jsonls',        -- JSON

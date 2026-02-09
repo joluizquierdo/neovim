@@ -151,7 +151,7 @@ Terminal UI for git operations within Neovim.
 ### LSP (Language Server Protocol)
 Provides IDE-like features: autocomplete, go-to-definition, diagnostics, etc.
 
-**Auto-installed servers:** lua_ls, pyright, ts_ls, gopls, terraformls, yamlls, jsonls, bashls
+**Auto-installed servers:** lua_ls, pyright, ts_ls, gopls, rust_analyzer, terraformls, yamlls, jsonls, bashls
 
 | Keymap | Description |
 |--------|-------------|
@@ -199,7 +199,7 @@ Provides advanced syntax highlighting and language-aware auto-indentation.
 | `:TSInstall <lang>` | Install parser for language |
 | `:TSUpdate` | Update all installed parsers |
 
-**Installed Parsers:** lua, python, go, typescript, javascript, bash, zsh, html, helm, terraform, dockerfile, json, yaml, vim, vimdoc
+**Installed Parsers:** lua, python, go, rust, typescript, javascript, bash, zsh, html, helm, terraform, dockerfile, json, yaml, vim, vimdoc
 
 **Indentation Features:**
 - Automatically enables TreeSitter-based indentation for files with available parsers

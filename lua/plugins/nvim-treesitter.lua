@@ -10,6 +10,7 @@ return {
           'lua',
           'python',
           'go',
+          'rust',
           'typescript',
           'javascript',
           'bash',
