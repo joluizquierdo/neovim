@@ -174,10 +174,75 @@ Provides advanced syntax highlighting and language-aware auto-indentation.
 Active colorscheme. Auto-loads on startup.
 
 ### General Keymaps
-| Keymap | Description |
-|--------|-------------|
-| `<leader>pv` | Open file explorer (netrw) |
-| `<leader>qq` | Quit all windows |
+
+All custom keymaps are defined in `lua/config/keymaps.lua`:
+
+#### Navigation & Window Management
+| Keymap | Mode | Description |
+|--------|------|-------------|
+| `<leader>pv` | Normal | Open file explorer (netrw) |
+| `<leader>qq` | Normal | Quit all windows |
+
+#### Moving & Editing Text
+| Keymap | Mode | Description |
+|--------|------|-------------|
+| `J` | Visual | Move selected lines down (maintains indentation) |
+| `K` | Visual | Move selected lines up (maintains indentation) |
+| `J` | Normal | Join line below with space, keep cursor position |
+| `<C-d>` | Normal | Half-page down, cursor stays centered |
+| `<C-u>` | Normal | Half-page up, cursor stays centered |
+| `n` | Normal | Next search result, cursor stays centered |
+| `N` | Normal | Previous search result, cursor stays centered |
+
+#### Clipboard & Registers
+| Keymap | Mode | Description |
+|--------|------|-------------|
+| `<leader>y` | Normal/Visual | Yank to system clipboard |
+| `<leader>Y` | Normal | Yank line to system clipboard |
+| `<leader>p` | Visual | Paste without losing clipboard content |
+| `<leader>d` | Normal/Visual | Delete without saving to clipboard |
+
+#### Find & Replace
+| Keymap | Mode | Description |
+|--------|------|-------------|
+| `<leader>s` | Normal | Find & replace word under cursor (interactive) |
+
+#### Utility
+| Keymap | Mode | Description |
+|--------|------|-------------|
+| `<C-c>` | Insert | Exit insert mode (same as Esc, fixes visual-block mode) |
+| `<leader>x` | Normal | Make current file executable (chmod +x) |
+| `Q` | Normal | Disabled (prevents accidental Ex mode) |
+
+#### Keymap Tips & Examples
+
+**Moving Lines (Visual J/K):**
+- Select lines with `V` (visual-line mode)
+- Press `J` to move down or `K` to move up
+- Keeps selection active - press multiple times to move further
+- Auto-indents moved lines
+
+**Smart Paste (`<leader>p`):**
+- Yank text with `y`
+- Select text you want to replace with visual mode
+- Press `<leader>p` to paste without losing your yanked text
+- Useful when replacing multiple occurrences
+
+**Find & Replace (`<leader>s`):**
+- Place cursor on word you want to replace
+- Press `<leader>s`
+- Type replacement text and press Enter
+- Interactive - shows matches as you type
+
+**System Clipboard (`<leader>y`):**
+- Works like normal `y` but copies to system clipboard
+- Paste in other applications with Cmd+V (Mac) or Ctrl+V (Linux/Windows)
+- Use `<leader>Y` to copy entire line
+
+**Centered Scrolling (`<C-d>`, `<C-u>`, `n`, `N`):**
+- Keeps cursor in middle of screen while navigating
+- Reduces eye movement and improves focus
+- Especially useful when searching with `/`
 
 ## Configuration Options
 
