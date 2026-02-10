@@ -76,7 +76,7 @@ This configuration uses a **two-layer indentation system**:
 
 ## Plugins
 
-### OpenCode (AI Coding Assistant)
+### 🤖 OpenCode (AI Coding Assistant)
 In-editor AI assistant powered by Claude for code generation, refactoring, and questions.
 
 | Keymap | Description |
@@ -100,7 +100,7 @@ In-editor AI assistant powered by Claude for code generation, refactoring, and q
 
 **Note:** The default `<C-a>` and `<C-x>` keymaps conflict with Vim's increment/decrement. Use `+` and `-` instead for those operations.
 
-### Snacks.nvim (UI Utilities)
+### 🍿 Snacks.nvim (UI Utilities)
 Lightweight UI utilities library providing input prompts, pickers, and terminal windows. Used as backend for OpenCode plugin.
 
 **Features:**
@@ -110,7 +110,7 @@ Lightweight UI utilities library providing input prompts, pickers, and terminal 
 
 **Note:** Only input, picker, and terminal modules are enabled. This plugin runs transparently in the background.
 
-### Telescope (Fuzzy Finder)
+### 🔭 Telescope (Fuzzy Finder)
 | Keymap | Description |
 |--------|-------------|
 | `<leader>pf` | Find files (all files) |
@@ -118,7 +118,7 @@ Lightweight UI utilities library providing input prompts, pickers, and terminal 
 | `<Ctrl-p>` | Find git tracked files |
 | `<leader>ps` | Grep search (prompt for search term) |
 
-### Blink Completion (blink.cmp)
+### ⚡ Blink Completion (blink.cmp)
 **Performant, batteries-included autocompletion plugin** with fuzzy matching and multiple sources.
 
 Completions appear automatically as you type with intelligent ranking and typo resistance.
@@ -154,7 +154,7 @@ Completions appear automatically as you type with intelligent ranking and typo r
 - `:BlinkCmpHide` - Hide completion menu
 - `:BlinkCmpToggle` - Toggle completion
 
-### Harpoon (Quick File Navigation)
+### 🎯 Harpoon (Quick File Navigation)
 Mark and quickly navigate between frequently used files.
 
 | Keymap | Description |
@@ -173,7 +173,7 @@ Mark and quickly navigate between frequently used files.
 - Visual select + move - Reorder marks
 - `q` or `<Esc>` - Close and save
 
-### LazyGit (Git Integration)
+### 🌳 LazyGit (Git Integration)
 Terminal UI for git operations within Neovim.
 
 | Keymap | Description |
@@ -184,7 +184,7 @@ Terminal UI for git operations within Neovim.
 - `?` - Show help/keybindings
 - `q` - Quit LazyGit
 
-### LSP (Language Server Protocol)
+### 🔧 LSP (Language Server Protocol)
 Provides IDE-like features: autocomplete, go-to-definition, diagnostics, etc.
 
 **Auto-installed servers:** lua_ls, pyright, ts_ls, gopls, rust_analyzer, terraformls, yamlls, jsonls, bashls
@@ -212,7 +212,7 @@ Provides IDE-like features: autocomplete, go-to-definition, diagnostics, etc.
 - `:LspInstall <server>` - Install LSP server
 - `:LspRestart` - Restart LSP servers
 
-### Undotree (Undo History)
+### ⏪ Undotree (Undo History)
 Visualize and navigate your undo history as a tree.
 
 | Keymap | Description |
@@ -225,7 +225,7 @@ Visualize and navigate your undo history as a tree.
 - View timestamps and change previews
 - `q` - Close panel
 
-### TreeSitter (Syntax Highlighting & Indentation)
+### 🌲 TreeSitter (Syntax Highlighting & Indentation)
 Provides advanced syntax highlighting and language-aware auto-indentation.
 
 | Command | Description |
@@ -243,7 +243,7 @@ Provides advanced syntax highlighting and language-aware auto-indentation.
 - Respects your tab settings (4 spaces per indent level)
 - Use `=` in visual mode or `gg=G` to auto-indent entire file
 
-### Kanagawa (Colorscheme)
+### 🎨 Kanagawa (Colorscheme)
 Active colorscheme. Auto-loads on startup.
 
 ### General Keymaps
