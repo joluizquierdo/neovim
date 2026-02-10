@@ -1,6 +1,33 @@
 # Neovim Configuration
 
-Minimal Neovim configuration using Lua and lazy.nvim package manager.
+> [!NOTE]
+> TL;DR: Minimal configuration inspired by ThePrimeagen wisdom 
+> to use only what's useful.
+
+Well, here we go again, this is just another attempt to create my custom
+configuration for neovim. I promised myself to stick to some community 
+ready solution like [lazyvim](https://www.lazyvim.org/). And it did
+the job quite well for some time. 
+
+But in the end those distributions ship with tons of plugins
+that I really don't need... and updates are sometimes a pain in the ass because
+in the end things break, and even though the lazyvim team does a magnificent
+work it's kind of difficult to solve and troubleshoot some of those errors 
+sometimes.
+
+Thus, following [ThePrimeagen's](https://www.youtube.com/@ThePrimeagen/videos)
+advice and way of doing things, I came up with my minimal neovim setup inspired 
+by their setup and wisdom.
+
+The philosophy of this configuration is to only keep stuff that's really useful 
+to boost my productivity. I don't care about fancy looking terminal and file
+tree navigators, or really stylish pop-up windows.
+
+Feel free to do whatever you like with this config, honestly
+my advice for you is to create your own suited to your needs.
+
+> [!WARNING]
+> Stuff might be broken, I didn't ship a stable version yet
 
 ## 🚀 Quick Start
 
