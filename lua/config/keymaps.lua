@@ -41,3 +41,7 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- make current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Close current buffer and goes to the previous one
+vim.keymap.set('n', '<leader>bd', ':bp | bd #<CR>', { silent = true, desc = "Delete buffer, keep window" })
+
