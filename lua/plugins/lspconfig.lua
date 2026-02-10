@@ -27,12 +27,12 @@ return {
                 map('<C-k>', vim.lsp.buf.signature_help, 'Signature help')
                 
                 map('<leader>cd', vim.diagnostic.open_float, 'Show diagnostic')
-                map('[d', vim.diagnostic.goto_prev, 'Previous diagnostic')
-                map(']d', vim.diagnostic.goto_next, 'Next diagnostic')
+                map('[d', function() vim.diagnostic.jump({ count = -1 }) end, 'Previous diagnostic')
+                map(']d', function() vim.diagnostic.jump({ count = 1 }) end, 'Next diagnostic')
                 
                 -- Highlight references under cursor
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
-                if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+                if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
                     local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
                     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                         buffer = event.buf,
@@ -60,7 +60,14 @@ return {
         -- Diagnostic configuration
         vim.diagnostic.config({
             virtual_text = true,
-            signs = true,
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = " ",
+                    [vim.diagnostic.severity.WARN] = " ",
+                    [vim.diagnostic.severity.HINT] = " ",
+                    [vim.diagnostic.severity.INFO] = " ",
+                },
+            },
             update_in_insert = false,
             underline = true,
             severity_sort = true,
@@ -69,12 +76,5 @@ return {
                 source = true,
             },
         })
-
-        -- Customize diagnostic signs
-        local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
     end,
 }
