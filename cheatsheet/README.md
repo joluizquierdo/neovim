@@ -12,13 +12,13 @@ Quick reference for all keybindings and shortcuts in this configuration.
 
 | Keymap | Mode | Description | Source |
 |--------|------|-------------|--------|
-| `<C-a>` | Normal, Visual | Ask OpenCode (with current context) | OpenCode |
-| `<C-x>` | Normal, Visual | Execute OpenCode action menu | OpenCode |
-| `<C-.>` | Normal, Terminal | Toggle OpenCode panel | OpenCode |
-| `go` | Normal, Visual | Add range to OpenCode | OpenCode |
-| `goo` | Normal | Add current line to OpenCode | OpenCode |
-| `<S-C-u>` | Normal | Scroll OpenCode panel up | OpenCode |
-| `<S-C-d>` | Normal | Scroll OpenCode panel down | OpenCode |
+| `<leader>oa` | Normal, Visual | Ask OpenCode (with current context) | OpenCode |
+| `<leader>om` | Normal, Visual | Execute OpenCode action menu | OpenCode |
+| `<leader>ot` | Normal, Terminal | Toggle OpenCode panel | OpenCode |
+| `<leader>or` | Normal, Visual | Add range to OpenCode | OpenCode |
+| `<leader>ol` | Normal | Add current line to OpenCode | OpenCode |
+| `<leader>ou` | Normal | Scroll OpenCode panel up | OpenCode |
+| `<leader>od` | Normal | Scroll OpenCode panel down | OpenCode |
 
 ### 🔧 LSP (Language Server Protocol)
 
@@ -125,8 +125,6 @@ Quick reference for all keybindings and shortcuts in this configuration.
 |--------|------|-------------|--------|
 | `<C-c>` | Insert | Exit insert mode (fixes visual-block) | Custom |
 | `<leader>x` | Normal | Make current file executable | Custom |
-| `+` | Normal | Increment number under cursor | Custom |
-| `-` | Normal | Decrement number under cursor | Custom |
 | `Q` | Normal | Disabled (prevents Ex mode) | Custom |
 
 ---

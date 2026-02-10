@@ -112,24 +112,20 @@ In-editor AI assistant powered by Claude for code generation, refactoring, and q
 
 | Keymap | Description |
 |--------|-------------|
-| `<C-a>` | Ask OpenCode (with current context) |
-| `<C-x>` | Execute OpenCode action menu |
-| `<C-.>` | Toggle OpenCode panel |
-| `go` | Add visual range to OpenCode |
-| `goo` | Add current line to OpenCode |
-| `<S-C-u>` | Scroll OpenCode panel up |
-| `<S-C-d>` | Scroll OpenCode panel down |
-| `+` | Increment number under cursor |
-| `-` | Decrement number under cursor |
+| `<leader>oa` | Ask OpenCode (with current context) |
+| `<leader>om` | Execute OpenCode action menu |
+| `<leader>ot` | Toggle OpenCode panel |
+| `<leader>or` | Add visual range to OpenCode |
+| `<leader>ol` | Add current line to OpenCode |
+| `<leader>ou` | Scroll OpenCode panel up |
+| `<leader>od` | Scroll OpenCode panel down |
 
 **Features:**
-- Ask questions about code with `<C-a>`
-- Select from common actions with `<C-x>`
-- Send code ranges to OpenCode with `go` in visual mode
+- Ask questions about code with `<leader>oa`
+- Select from common actions with `<leader>om`
+- Send code ranges to OpenCode with `<leader>or` in visual mode
 - Persistent chat history across sessions
 - Context-aware suggestions using `@this` prefix
-
-**Note:** The default `<C-a>` and `<C-x>` keymaps conflict with Vim's increment/decrement. Use `+` and `-` instead for those operations.
 
 ### 🍿 Snacks.nvim (UI Utilities)
 Lightweight UI utilities library providing input prompts, pickers, and terminal windows. Used as backend for OpenCode plugin.
