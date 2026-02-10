@@ -60,6 +60,10 @@ nvim test.lua
 ```
 ~/.config/nvim/
 ├── init.lua                    # Entry point - sets leader keys, loads config
+├── README.md                   # Main documentation
+├── AGENTS.md                   # This file - guidelines for AI agents
+├── cheatsheet/
+│   └── README.md               # Complete keybindings reference (MUST be kept updated)
 ├── lua/
 │   ├── config/
 │   │   ├── lazy.lua            # lazy.nvim bootstrap (rarely modified)
@@ -241,10 +245,39 @@ Terminal UI for git operations within Neovim.
 **After ANY config change:**
 
 1. Update README.md to reflect changes
-2. Keep explanations simple and concise
-3. Add examples for complex features
-4. Test all documented keymaps manually
-5. Ensure README.md structure matches guidelines above
+2. **Update cheatsheet/README.md if keymaps changed** - This is CRITICAL
+3. Keep explanations simple and concise
+4. Add examples for complex features
+5. Test all documented keymaps manually
+6. Ensure README.md structure matches guidelines above
+
+### Maintaining the Cheatsheet
+
+**CRITICAL:** The `cheatsheet/README.md` file is a comprehensive keybindings reference that MUST be kept in sync with all configuration changes.
+
+**When to update the cheatsheet:**
+
+1. **Adding a new plugin** - Add all its keymaps to the appropriate section
+2. **Removing a plugin** - Remove all its keymaps from the cheatsheet
+3. **Modifying existing keymaps** - Update the keymap entries
+4. **Adding custom keymaps** - Add to the appropriate category (Navigation, Editing, Clipboard, etc.)
+5. **Changing keymap descriptions** - Update descriptions to match
+
+**Cheatsheet structure:**
+- Organized by plugin/functionality (AI, LSP, Completion, Telescope, etc.)
+- Table format: `| Keymap | Mode | Description | Source |`
+- Includes Quick Tips section with usage examples
+- Includes Useful Commands section with common Vim commands
+- Keep sections in order of frequency of use (most used first)
+
+**Example workflow:**
+```
+1. Add new keymap to lua/plugins/someplugin.lua
+2. Update README.md plugin section with the keymap
+3. Update cheatsheet/README.md with the keymap in appropriate table
+4. Test the keymap works
+5. Commit all three files together
+```
 
 ## Plugin Simplification Principles
 

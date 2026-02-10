@@ -2,6 +2,10 @@
 
 Minimal Neovim configuration using Lua and lazy.nvim package manager.
 
+## 🚀 Quick Start
+
+**Want to jump directly to all shortcuts?** → [📖 View Complete Cheatsheet](./cheatsheet/README.md)
+
 ## Setup
 
 ### Requirements
