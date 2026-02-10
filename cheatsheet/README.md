@@ -79,6 +79,29 @@ Quick reference for all keybindings and shortcuts in this configuration.
 |--------|------|-------------|--------|
 | `<leader>gg` | Normal | Open LazyGit | LazyGit |
 
+### 🔰 Git Signs & Hunks (Gitsigns)
+
+| Keymap | Mode | Description | Source |
+|--------|------|-------------|--------|
+| `]c` | Normal | Next git hunk | Gitsigns |
+| `[c` | Normal | Previous git hunk | Gitsigns |
+| `<leader>gs` | Normal, Visual | Stage hunk | Gitsigns |
+| `<leader>gr` | Normal, Visual | Reset hunk | Gitsigns |
+| `<leader>gS` | Normal | Stage buffer | Gitsigns |
+| `<leader>gR` | Normal | Reset buffer | Gitsigns |
+| `<leader>gu` | Normal | Undo stage hunk | Gitsigns |
+| `<leader>gp` | Normal | Preview hunk (popup) | Gitsigns |
+| `<leader>gi` | Normal | Preview hunk inline | Gitsigns |
+| `<leader>gb` | Normal | Blame line | Gitsigns |
+| `<leader>gd` | Normal | Diff this | Gitsigns |
+| `<leader>gD` | Normal | Diff against last commit | Gitsigns |
+| `<leader>gQ` | Normal | Load all hunks to quickfix | Gitsigns |
+| `<leader>gq` | Normal | Load hunks to quickfix | Gitsigns |
+| `<leader>tb` | Normal | Toggle git blame | Gitsigns |
+| `<leader>tw` | Normal | Toggle word diff | Gitsigns |
+| `<leader>tg` | Normal | Toggle git signs | Gitsigns |
+| `ig` | Operator, Visual | Select git hunk | Gitsigns |
+
 ### ⏪ Undo History (Undotree)
 
 | Keymap | Mode | Description | Source |

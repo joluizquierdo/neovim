@@ -70,6 +70,7 @@ nvim
 │       ├── harpoon.lua   # Quick file navigation
 │       ├── undotree.lua  # Undo history visualizer
 │       ├── lazygit.lua   # Git integration
+│       ├── gitsigns.lua  # Git signs & hunk operations
 │       ├── opencode.lua  # AI coding assistant
 │       ├── snacks.lua    # UI utilities library
 │       ├── blink-cmp.lua # Autocompletion engine
@@ -166,6 +167,35 @@ Mark and quickly navigate between frequently used files.
 
 ### 🌳 LazyGit (Git Integration)
 Terminal UI for git operations within Neovim. Press `?` inside LazyGit to see all available commands.
+
+### 🔰 Gitsigns (Git Buffer Integration)
+Deep git integration showing changes in the sign column and providing hunk operations.
+
+**Features:**
+- **Signs** - Visual indicators in sign column for added, changed, and deleted lines
+- **Staged Signs** - Different signs for staged changes
+- **Hunk Actions** - Stage, reset, and preview hunks inline or in popup
+- **Blame** - Show git blame for current line or entire buffer
+- **Diff** - Compare buffer with index or any revision
+- **Word Diff** - Intra-line word-level diffs
+- **Quickfix Integration** - Load hunks into quickfix/location list
+
+**Commands:**
+- `:Gitsigns stage_hunk` - Stage current hunk
+- `:Gitsigns reset_hunk` - Reset current hunk
+- `:Gitsigns preview_hunk` - Preview hunk in popup
+- `:Gitsigns preview_hunk_inline` - Preview hunk inline
+- `:Gitsigns blame_line` - Show blame for current line
+- `:Gitsigns blame` - Show blame buffer
+- `:Gitsigns diffthis [revision]` - Diff buffer against index or revision
+- `:Gitsigns toggle_current_line_blame` - Toggle blame virtual text
+- `:Gitsigns toggle_word_diff` - Toggle word-level diff
+- `:Gitsigns setqflist` - Load hunks to quickfix
+
+**Status Line Integration:**
+- `b:gitsigns_head` - Current branch name
+- `b:gitsigns_status` - Formatted status (e.g., "+3 ~2 -1")
+- `b:gitsigns_status_dict` - Status dict with `added`, `removed`, `changed`, `head` keys
 
 ### 🔧 LSP (Language Server Protocol)
 Provides IDE-like features: autocomplete, go-to-definition, diagnostics, refactoring, and more.
