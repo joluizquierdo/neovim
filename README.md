@@ -70,10 +70,9 @@ nvim
 │       ├── telescope.lua # Fuzzy finder
 │       ├── harpoon.lua   # Quick file navigation
 │       ├── undotree.lua  # Undo history visualizer
-│       ├── lazygit.lua   # Git integration
 │       ├── gitsigns.lua  # Git signs & hunk operations
 │       ├── opencode.lua  # AI coding assistant
-│       ├── snacks.lua    # UI utilities library
+│       ├── snacks.lua    # UI utilities & terminal (includes lazygit)
 │       ├── blink-cmp.lua # Autocompletion engine
 │       ├── mason.lua     # LSP/tool installer
 │       ├── mason-lspconfig.lua # LSP auto-config & blink.cmp integration
@@ -121,9 +120,15 @@ In-editor AI assistant powered by Claude for code generation, refactoring, and q
 - Context-aware suggestions using `@this` prefix
 
 ### 🍿 Snacks.nvim (UI Utilities)
-Lightweight UI utilities library providing input prompts, pickers, and terminal windows. Used as backend for OpenCode plugin.
+Lightweight UI utilities library providing input prompts, pickers, terminal windows, and LazyGit integration. Used as backend for OpenCode and LazyGit.
 
-**Note:** Only input, picker, and terminal modules are enabled. This plugin runs transparently in the background.
+**Enabled Features:**
+- **Input** - Better vim.ui.input prompts (used by OpenCode)
+- **Picker** - Selection menus (used by OpenCode)
+- **Terminal** - Improved terminal window handling with proper key support
+- **LazyGit** - Git UI with auto-configured colorscheme and Neovim integration
+
+**Note:** Terminal integration fixes leader key conflicts in terminal mode, making git operations smoother.
 
 ### 🔑 Which-Key (Keymap Helper)
 Shows available keybindings in a popup when you press the leader key. Helps discover commands without memorizing shortcuts.
@@ -176,7 +181,18 @@ Mark and quickly navigate between frequently used files.
 - Navigate between marks sequentially
 
 ### 🌳 LazyGit (Git Integration)
-Terminal UI for git operations within Neovim. Press `?` inside LazyGit to see all available commands.
+Terminal UI for git operations within Neovim using Snacks terminal integration. Automatically configures colorscheme and provides better terminal key handling.
+
+**Features:**
+- Auto-configured colorscheme matching Neovim theme
+- Proper terminal key handling (leader key works correctly)
+- Integration with Neovim for editing commit messages
+- Opens in floating window via Snacks terminal
+
+**In LazyGit:**
+- `?` - Show help/keybindings
+- `q` - Quit LazyGit
+- Standard git operations (stage, commit, push, pull, etc.)
 
 ### 🔰 Gitsigns (Git Buffer Integration)
 Deep git integration showing changes in the sign column and providing hunk operations.

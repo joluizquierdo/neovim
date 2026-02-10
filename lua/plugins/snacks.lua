@@ -1,8 +1,6 @@
 return {
     "folke/snacks.nvim",
     priority = 1000,
-        input = { enabled = true },
-        picker = { enabled = true },
     lazy = false,
     ---@type snacks.Config
     opts = {
@@ -11,6 +9,7 @@ return {
         input = { enabled = true },
         picker = { enabled = true },
         terminal = { enabled = true },
+        lazygit = { enabled = true },
 
         bigfile = { enabled = false },
         dashboard = { enabled = false },
@@ -23,6 +22,14 @@ return {
         statuscolumn = { enabled = false },
         words = { enabled = false },
         toggle = { enabled = false },
-        lazygit = {enabled = false },
     },
+    config = function(_, opts)
+        local snacks = require("snacks")
+        snacks.setup(opts)
+
+        -- LazyGit keymap
+        vim.keymap.set("n", "<leader>gg", function()
+            snacks.lazygit()
+        end, { desc = "Open LazyGit" })
+    end,
 }

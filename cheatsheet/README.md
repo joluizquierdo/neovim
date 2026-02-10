@@ -118,6 +118,8 @@ Quick reference for all keybindings and shortcuts in this configuration.
 
 | Keymap | Mode | Description | Source |
 |--------|------|-------------|--------|
+| `<C-o>` | Normal | Jump to older position (jump list) | Built-in |
+| `<C-i>` | Normal | Jump to newer position (jump list) | Built-in |
 | `<leader>pv` | Normal | Open file explorer (netrw) | Custom |
 | `<leader>qq` | Normal | Quit all windows | Custom |
 
