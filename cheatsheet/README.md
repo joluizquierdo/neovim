@@ -138,6 +138,21 @@ Quick reference for all keybindings and shortcuts in this configuration.
 | `zug` | Normal | Remove word from dictionary | Built-in |
 | `zw` | Normal | Mark word as incorrect | Built-in |
 
+### 📁 Code Folding (TreeSitter)
+
+| Keymap | Mode | Description | Source |
+|--------|------|-------------|--------|
+| `za` | Normal | Toggle fold under cursor | Built-in |
+| `zA` | Normal | Toggle fold recursively | Built-in |
+| `zo` | Normal | Open fold under cursor | Built-in |
+| `zO` | Normal | Open fold recursively | Built-in |
+| `zc` | Normal | Close fold under cursor | Built-in |
+| `zC` | Normal | Close fold recursively | Built-in |
+| `zR` | Normal | Open all folds in file | Built-in |
+| `zM` | Normal | Close all folds in file | Built-in |
+| `zj` | Normal | Move to next fold | Built-in |
+| `zk` | Normal | Move to previous fold | Built-in |
+
 ---
 
 ## 📝 Quick Tips
@@ -177,6 +192,14 @@ Quick reference for all keybindings and shortcuts in this configuration.
 - Use `]s` and `[s` to navigate between errors
 - Add words to your personal dictionary with `zg`
 - Commands: `:set spell` (enable), `:set nospell` (disable), `:set spelllang=en_us` (change language)
+
+### Code Folding
+- TreeSitter-based folding automatically enabled for supported languages
+- Quick toggle: Place cursor on function/class and press `za` to fold/unfold
+- Collapse all: Press `zM` to close all folds, then `za` to expand sections you need
+- Expand all: Press `zR` to open everything
+- Navigate: Use `zj` and `zk` to jump between foldable sections
+- All folds are open by default (`foldlevel = 99`)
 
 ---
 

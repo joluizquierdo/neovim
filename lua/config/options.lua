@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 vim.opt.nu = true -- Enable line numbers
 vim.opt.relativenumber = true -- relative numbers
 
@@ -39,3 +40,18 @@ vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter', 'BufWinEnter' }, {
         end
     end,
 })
+
+-- Enable folding to use treesitter otherwise fallback to manual
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    callback = function()
+        -- Check if treesitter parser is available for current buffer
+        if pcall(vim.treesitter.get_parser, 0) then
+            vim.opt_local.foldmethod = "expr"
+            vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        else
+            vim.opt_local.foldmethod = "manual"
+        end
+    end,
+})
+vim.opt.foldlevel = 99
+
