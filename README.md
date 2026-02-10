@@ -38,6 +38,8 @@ nvim
 │       ├── harpoon.lua   # Quick file navigation
 │       ├── undotree.lua  # Undo history visualizer
 │       ├── lazygit.lua   # Git integration
+│       ├── opencode.lua  # AI coding assistant
+│       ├── snacks.lua    # UI utilities library
 │       ├── blink-cmp.lua # Autocompletion engine
 │       ├── mason.lua     # LSP/tool installer
 │       ├── mason-lspconfig.lua # LSP auto-config & blink.cmp integration
@@ -73,6 +75,40 @@ This configuration uses a **two-layer indentation system**:
 - `lua/plugins/nvim-treesitter.lua` - TreeSitter indent via autocmd
 
 ## Plugins
+
+### OpenCode (AI Coding Assistant)
+In-editor AI assistant powered by Claude for code generation, refactoring, and questions.
+
+| Keymap | Description |
+|--------|-------------|
+| `<C-a>` | Ask OpenCode (with current context) |
+| `<C-x>` | Execute OpenCode action menu |
+| `<C-.>` | Toggle OpenCode panel |
+| `go` | Add visual range to OpenCode |
+| `goo` | Add current line to OpenCode |
+| `<S-C-u>` | Scroll OpenCode panel up |
+| `<S-C-d>` | Scroll OpenCode panel down |
+| `+` | Increment number under cursor |
+| `-` | Decrement number under cursor |
+
+**Features:**
+- Ask questions about code with `<C-a>`
+- Select from common actions with `<C-x>`
+- Send code ranges to OpenCode with `go` in visual mode
+- Persistent chat history across sessions
+- Context-aware suggestions using `@this` prefix
+
+**Note:** The default `<C-a>` and `<C-x>` keymaps conflict with Vim's increment/decrement. Use `+` and `-` instead for those operations.
+
+### Snacks.nvim (UI Utilities)
+Lightweight UI utilities library providing input prompts, pickers, and terminal windows. Used as backend for OpenCode plugin.
+
+**Features:**
+- Input prompts for interactive dialogs
+- Picker interface for selections
+- Terminal integration
+
+**Note:** Only input, picker, and terminal modules are enabled. This plugin runs transparently in the background.
 
 ### Telescope (Fuzzy Finder)
 | Keymap | Description |
