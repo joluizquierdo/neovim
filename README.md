@@ -133,11 +133,10 @@ Lightweight UI utilities library providing input prompts, pickers, terminal wind
 ### 🔑 Which-Key (Keymap Helper)
 Shows available keybindings in a popup when you press the leader key. Helps discover commands without memorizing shortcuts.
 
-| Keymap | Description |
-|--------|-------------|
-| `<leader>?` | Show buffer-local keymaps |
-
-**Note:** Popup appears automatically after ~500ms when pressing `<Space>` (leader key). Commands are organized by category (code, diagnostics, git, harpoon, etc.)
+**Features:**
+- Popup appears automatically after ~500ms when pressing `<Space>` (leader key)
+- Commands are organized by category (code, diagnostics, git, harpoon, etc.)
+- Press `<leader>?` to show buffer-local keymaps
 
 ### 🔭 Telescope (Fuzzy Finder)
 Fast fuzzy finder for files, buffers, and text search using Telescope.
@@ -228,38 +227,13 @@ Provides IDE-like features: autocomplete, go-to-definition, diagnostics, refacto
 
 **Auto-installed servers:** lua_ls, pyright, ts_ls, gopls, rust_analyzer, terraformls, yamlls, jsonls, bashls
 
-**Navigation (g prefix):**
-
-| Keymap | Description |
-|--------|-------------|
-| `gd` | Go to definition |
-| `gD` | Go to declaration |
-| `gr` | Go to references |
-| `gI` | Go to implementation |
-| `K` | Hover documentation |
-
-**Code Actions (<leader>c):**
-
-| Keymap | Description |
-|--------|-------------|
-| `<leader>ca` | Code action |
-| `<leader>cr` | Rename symbol |
-| `<leader>cd` | Show diagnostic|
-| `<leader>cs` | Document symbols |
-| `<leader>cw` | Workspace symbols |
-
-**Diagnostics (<leader>d):**
-
-| Keymap | Description |
-|--------|-------------|
-| `[d` | Previous diagnostic |
-| `]d` | Next diagnostic |
-
-**Other:**
-
-| Keymap | Description |
-|--------|-------------|
-| `<C-k>` | Signature help (insert mode) |
+**Features:**
+- Go to definition, declaration, references, and implementation
+- Hover documentation and signature help
+- Code actions and symbol renaming
+- Document and workspace symbol search
+- Diagnostic navigation
+- Integration with Telescope for symbol search
 
 **Commands:**
 - `:Mason` - Open Mason UI to manage LSP servers

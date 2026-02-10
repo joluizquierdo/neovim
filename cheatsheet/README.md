@@ -14,7 +14,8 @@ Quick reference for all keybindings and shortcuts in this configuration.
 |--------|------|-------------|--------|
 | `<leader>oa` | Normal, Visual | Ask OpenCode (with current context) | OpenCode |
 | `<leader>om` | Normal, Visual | Execute OpenCode action menu | OpenCode |
-| `<leader>ot` | Normal, Terminal | Toggle OpenCode panel | OpenCode |
+| `<leader>ot` | Normal | Toggle OpenCode panel | OpenCode |
+| `<leader>oi` | Normal | Interrupt OpenCode session | OpenCode |
 | `<leader>or` | Normal, Visual | Add range to OpenCode | OpenCode |
 | `<leader>ol` | Normal | Add current line to OpenCode | OpenCode |
 | `<leader>ou` | Normal | Scroll OpenCode panel up | OpenCode |

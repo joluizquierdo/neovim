@@ -1,329 +1,160 @@
 # AGENTS.md - Neovim Configuration Development Guide
 
-This document provides guidelines for AI coding agents working on this Neovim configuration repository.
+Guidelines for AI coding agents working on this Neovim configuration repository.
 
 ## Primary Objectives
 
-1. **Documentation Excellence**: Keep documentation simple, concise, and comprehensive. Every keymap, macro, and plugin feature must be documented like a user manual.
-2. **Correctness First**: All configuration changes must work correctly before being committed.
-3. **Plugin Simplification**: Favor simpler, more maintainable plugin configurations over complex setups.
+1. **Documentation Excellence**: Every keymap and plugin feature must be documented
+2. **Correctness First**: All changes must work before being committed
+3. **Simplicity**: Favor simple, maintainable configurations over complex setups
 
-## Build/Test Commands
+## Testing Commands
 
-This is a Neovim configuration repository with no traditional build/test system. Validation is done manually:
+No automated tests. Validate manually:
 
-**Basic validation:**
 ```bash
-# Start Neovim (tests if config loads without errors)
-nvim
-
-# Check health of all components
-nvim +checkhealth
-
-# Check LSP health specifically
-nvim +":checkhealth vim.lsp" +q
-
-# Check treesitter health
-nvim +":checkhealth nvim-treesitter" +q
-
-# View startup messages/errors
-nvim +messages
+nvim                              # Test config loads
+nvim +checkhealth                 # Check all components
+nvim +":checkhealth vim.lsp"      # Check LSP
+nvim +messages                    # View startup errors
 ```
-
-**Testing plugin changes:**
-```bash
-# Open a test file with the language you're testing
-nvim test.lua  # For Lua LSP/treesitter testing
-nvim test.py   # For Python LSP/treesitter testing
-
-# Inside Neovim, verify:
-# - :LspInfo (check LSP attaches correctly)
-# - :InspectTree (check treesitter parser loads)
-# - :Lazy (check plugin status)
-# - :Mason (check installed LSP servers)
-```
-
-**Testing specific keymaps:**
-```bash
-# Open Neovim with a test file
-nvim test.lua
-
-# Test the keymap manually
-# Example: Press <leader>pf to test telescope file finder
-# Example: Type some code and test LSP keymaps (gd, gr, K, etc.)
-```
-
-**No automated tests exist.** All testing is manual via opening Neovim and verifying functionality.
 
 ## File Structure
 
 ```
 ~/.config/nvim/
-├── init.lua                    # Entry point - sets leader keys, loads config
-├── README.md                   # Main documentation
-├── AGENTS.md                   # This file - guidelines for AI agents
-├── cheatsheet/
-│   └── README.md               # Complete keybindings reference (MUST be kept updated)
-├── lua/
-│   ├── config/
-│   │   ├── lazy.lua            # lazy.nvim bootstrap (rarely modified)
-│   │   ├── options.lua         # Vim options (tabs, display, file handling)
-│   │   └── keymaps.lua         # Global keymaps (non-plugin specific)
-│   └── plugins/
-│       ├── *.lua               # One file per plugin spec
+├── init.lua                 # Entry point
+├── README.md                # Main docs (NO keymaps)
+├── cheatsheet/README.md     # ALL keymaps (single source of truth)
+├── lua/config/
+│   ├── options.lua          # Vim options
+│   └── keymaps.lua          # Global keymaps
+└── lua/plugins/*.lua        # One file per plugin
 ```
 
-## Code Style Guidelines
+## Code Style
 
-### File Organization
+### Plugin Configuration
 
-- **One plugin per file** in `lua/plugins/`
-- **Plugin filename** should match plugin name (e.g., `telescope.lua` for telescope plugin)
-- **Global keymaps** go in `lua/config/keymaps.lua`
-- **Plugin-specific keymaps** go in the plugin's config file
-
-### Plugin Configuration Patterns
-
-**Prefer lazy-loading with `keys` when possible:**
 ```lua
+# Simple (preferred)
 return {
     'plugin/name',
     keys = {
         {'<leader>x', '<cmd>Command<cr>', desc = 'Description'},
     },
 }
-```
 
-**For plugins requiring setup, use `config` function:**
-```lua
+# With setup
 return {
     'plugin/name',
     config = function()
-        local plugin = require('plugin')
-        plugin.setup({
-            -- configuration here
-        })
-        
-        -- Keymaps after setup
-        vim.keymap.set('n', '<leader>x', function() plugin.action() end, { desc = 'Description' })
+        require('plugin').setup({ })
+        vim.keymap.set('n', '<leader>x', func, { desc = 'Description' })
     end,
 }
 ```
 
-### Keymap Guidelines
+### Naming & Style
 
-**Always include `desc` for discoverability:**
-```lua
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'LSP: Code action' })
-```
+- Variables/functions: `snake_case`
+- No type annotations
+- Always include `desc` in keymaps
+- Use `pcall` for operations that might fail
+- Prefer function wrappers over string commands in keymaps
 
-**Use function wrappers for complex actions:**
-```lua
--- Good
-vim.keymap.set('n', '<leader>ps', function()
-    local builtin = require('telescope.builtin')
-    builtin.grep_string({search = vim.fn.input("🔎 Grep > ")})
-end, { desc = 'Search grep' })
+## Documentation Rules
 
--- Bad (mixing string commands with function calls)
-vim.keymap.set('n', '<leader>ps', ':lua require("telescope.builtin").grep_string({search = vim.fn.input("🔎 Grep > ")})<cr>')
-```
+### CRITICAL: Keymap Documentation
 
-### Type Annotations
+- **ALL keymaps** go in `cheatsheet/README.md` ONLY
+- **NO keymaps** in `README.md` (prevents duplication)
 
-This configuration **does not use type annotations**. Keep code simple and readable without type hints.
+### README.md Plugin Sections
 
-### Naming Conventions
-
-- **Variables**: `snake_case` (e.g., `local harpoon_files`)
-- **Functions**: `snake_case` (e.g., `function toggle_telescope()`)
-- **Constants**: `UPPER_SNAKE_CASE` for true constants (rare in this config)
-- **Keymaps**: Use `<leader>` prefix for custom bindings
-
-### Error Handling
-
-**Use `pcall` for operations that might fail:**
-```lua
--- Check if treesitter parser exists before enabling indent
-if pcall(vim.treesitter.get_parser) then
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-end
-```
-
-**Display errors to user when appropriate:**
-```lua
-if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-        { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-        { out, "WarningMsg" },
-    }, true, {})
-end
-```
-
-## Documentation Guidelines
-
-### README.md Structure
-
-The README.md must follow this exact structure:
-
-1. **Setup** - Installation requirements and steps
-2. **Overview** - File structure, leader key, core settings
-3. **Plugins** - One section per plugin with:
-   - Brief description (1-2 sentences)
-   - Keymaps table with 3 columns: Keymap | Description
-   - Commands (if applicable)
-   - Features list (if complex plugin)
-4. **General Keymaps** - Non-plugin keymaps organized by category
-5. **Configuration Options** - All vim options from options.lua
-6. **Useful Commands** - Common Neovim/plugin commands
-7. **Adding New Plugins** - Brief guide
-8. **Adding Support for New Languages** - Step-by-step guide
-
-### Keymap Documentation Format
-
-Always use this table format for keymaps:
-
-```markdown
-| Keymap | Description |
-|--------|-------------|
-| `<leader>pf` | Find files (all files) |
-| `<C-p>` | Find git tracked files |
-```
-
-**Rules:**
-- Wrap keymaps in backticks
-- Use plain English descriptions (no technical jargon)
-- Add context in parentheses when needed
-- Sort by frequency of use (most common first)
-
-### Plugin Documentation Requirements
-
-Every plugin section must include:
-
-1. **Plugin name** as heading
-2. **One-sentence description** of what it does
-3. **Keymaps table** (if plugin has keymaps)
-4. **Commands section** (if plugin has commands)
-5. **Usage examples** for complex features
+Each plugin section must include:
+1. Brief description (1-2 sentences)
+2. **Features list** (what it does, NO keymaps)
+3. Commands (if applicable)
+4. Usage examples (if complex)
 
 **Example:**
 ```markdown
 ### LazyGit (Git Integration)
 Terminal UI for git operations within Neovim.
 
-| Keymap | Description |
-|--------|-------------|
-| `<leader>gg` | Open LazyGit |
+**Features:**
+- Auto-configured colorscheme
+- Integration with Neovim for commit messages
+- Opens in floating window
 
 **In LazyGit:**
-- `?` - Show help/keybindings
-- `q` - Quit LazyGit
+- `?` - Show help
+- `q` - Quit
 ```
+
+### Cheatsheet Format
+
+```markdown
+| Keymap | Mode | Description | Source |
+|--------|------|-------------|--------|
+| `<leader>pf` | Normal | Find files | Telescope |
+```
+
+**Rules:**
+- Plain English descriptions
+- Sort by frequency of use
+- Include mode and source
 
 ## Common Tasks
 
-### Adding a New Plugin
+### Adding a Plugin
 
 1. Create `lua/plugins/<plugin-name>.lua`
-2. Use lazy.nvim spec format
-3. Add keymaps with `desc` fields
-4. Test by opening Neovim and running `:Lazy sync`
-5. Update README.md with plugin documentation
+2. Add keymaps with `desc` fields
+3. Test: `:Lazy sync` in Neovim
+4. Update README.md (features only)
+5. Update cheatsheet/README.md (keymaps)
 
 ### Adding Language Support
 
-**Both steps required:**
-
-1. Add treesitter parser to `lua/plugins/nvim-treesitter.lua`
+1. Add parser to `lua/plugins/nvim-treesitter.lua`
 2. Add LSP server to `lua/plugins/mason-lspconfig.lua`
 3. Restart Neovim
-4. Test with a file of that language
+4. Test with language file
 5. Update README.md language lists
 
 ### Updating Documentation
 
 **After ANY config change:**
+1. Update README.md (features/commands, NO keymaps)
+2. Update cheatsheet/README.md (if keymaps changed) - **CRITICAL**
+3. Test keymaps manually
 
-1. Update README.md to reflect changes
-2. **Update cheatsheet/README.md if keymaps changed** - This is CRITICAL
-3. Keep explanations simple and concise
-4. Add examples for complex features
-5. Test all documented keymaps manually
-6. Ensure README.md structure matches guidelines above
-
-### Maintaining the Cheatsheet
-
-**CRITICAL:** The `cheatsheet/README.md` file is a comprehensive keybindings reference that MUST be kept in sync with all configuration changes.
-
-**When to update the cheatsheet:**
-
-1. **Adding a new plugin** - Add all its keymaps to the appropriate section
-2. **Removing a plugin** - Remove all its keymaps from the cheatsheet
-3. **Modifying existing keymaps** - Update the keymap entries
-4. **Adding custom keymaps** - Add to the appropriate category (Navigation, Editing, Clipboard, etc.)
-5. **Changing keymap descriptions** - Update descriptions to match
-
-**Cheatsheet structure:**
-- Organized by plugin/functionality (AI, LSP, Completion, Telescope, etc.)
-- Table format: `| Keymap | Mode | Description | Source |`
-- Includes Quick Tips section with usage examples
-- Includes Useful Commands section with common Vim commands
-- Keep sections in order of frequency of use (most used first)
-
-**Example workflow:**
+**Workflow:**
 ```
-1. Add new keymap to lua/plugins/someplugin.lua
-2. Update README.md plugin section with the keymap
-3. Update cheatsheet/README.md with the keymap in appropriate table
-4. Test the keymap works
-5. Commit all three files together
+1. Add keymap to lua/plugins/someplugin.lua
+2. Update README.md plugin features
+3. Update cheatsheet/README.md keymap table
+4. Test keymap works
+5. Commit together
 ```
 
-## Plugin Simplification Principles
+## Simplification Principles
 
-1. **Avoid overengineering**: Use default plugin settings when possible
-2. **Minimize dependencies**: Only add required dependencies
-3. **Lazy load when possible**: Use `keys`, `cmd`, or `ft` for lazy loading
-4. **No premature optimization**: Start simple, optimize if needed
-5. **Delete unused features**: Remove keymaps/config for features not used
+1. Use default plugin settings when possible
+2. Minimize dependencies
+3. Lazy load with `keys`, `cmd`, or `ft`
+4. Start simple, optimize only if needed
+5. Remove unused features
 
-**Example - Good (simple):**
-```lua
-return {
-    'plugin/name',
-    keys = {
-        {'<leader>x', '<cmd>Command<cr>', desc = 'Do thing'},
-    },
-}
-```
+## Commit Messages
 
-**Example - Bad (overengineered):**
-```lua
-return {
-    'plugin/name',
-    lazy = true,
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { 'dep1', 'dep2', 'dep3' },
-    config = function()
-        -- 50 lines of custom config
-    end,
-}
-```
+Use conventional commits:
+- `feat: add rust language support`
+- `refactor: simplify telescope config`
+- `fix: treesitter indentation`
 
-## Commit Message Style
-
-- Use convential commit 
-- Use present tense ("Add feature" not "Added feature")
-- Use imperative mood ("Move cursor" not "Moves cursor")
-- First line: concise summary (50 chars or less)
-- Reference issue numbers if applicable
-
-**Examples:**
-```
-feat: add rust language support
-refactor: telescope keymaps
-fix: treesitter indentation for python
-```
 ---
 
-**Remember**: Documentation quality is the highest priority. Every change must be documented clearly and concisely in README.md.
+**Remember**: Documentation quality is the highest priority. Keymaps ONLY in cheatsheet.
