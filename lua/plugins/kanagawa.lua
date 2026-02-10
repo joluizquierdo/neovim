@@ -4,8 +4,8 @@ return {
     priority = 1001, -- Load before other plugins
     config = function()
         require('kanagawa').setup({}) -- default settings
-        vim.cmd('colorscheme kanagawa')
-        
+        vim.cmd('colorscheme kanagawa-dragon')
+
         -- Override spell highlighting for better visibility
         -- Uses underline + color which works in most terminals
         vim.api.nvim_set_hl(0, 'SpellBad', {
