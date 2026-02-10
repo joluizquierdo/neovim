@@ -66,6 +66,7 @@ nvim
 │   │   └── keymaps.lua   # Custom keymaps
 │   └── plugins/
 │       ├── kanagawa.lua  # Colorscheme
+│       ├── which-key.lua # Keymap helper
 │       ├── telescope.lua # Fuzzy finder
 │       ├── harpoon.lua   # Quick file navigation
 │       ├── undotree.lua  # Undo history visualizer
@@ -123,6 +124,15 @@ In-editor AI assistant powered by Claude for code generation, refactoring, and q
 Lightweight UI utilities library providing input prompts, pickers, and terminal windows. Used as backend for OpenCode plugin.
 
 **Note:** Only input, picker, and terminal modules are enabled. This plugin runs transparently in the background.
+
+### 🔑 Which-Key (Keymap Helper)
+Shows available keybindings in a popup when you press the leader key. Helps discover commands without memorizing shortcuts.
+
+| Keymap | Description |
+|--------|-------------|
+| `<leader>?` | Show buffer-local keymaps |
+
+**Note:** Popup appears automatically after ~500ms when pressing `<Space>` (leader key). Commands are organized by category (code, diagnostics, git, harpoon, etc.)
 
 ### 🔭 Telescope (Fuzzy Finder)
 Fast fuzzy finder for files, buffers, and text search using Telescope.
@@ -201,6 +211,39 @@ Deep git integration showing changes in the sign column and providing hunk opera
 Provides IDE-like features: autocomplete, go-to-definition, diagnostics, refactoring, and more.
 
 **Auto-installed servers:** lua_ls, pyright, ts_ls, gopls, rust_analyzer, terraformls, yamlls, jsonls, bashls
+
+**Navigation (g prefix):**
+
+| Keymap | Description |
+|--------|-------------|
+| `gd` | Go to definition |
+| `gD` | Go to declaration |
+| `gr` | Go to references |
+| `gI` | Go to implementation |
+| `K` | Hover documentation |
+
+**Code Actions (<leader>c):**
+
+| Keymap | Description |
+|--------|-------------|
+| `<leader>ca` | Code action |
+| `<leader>cr` | Rename symbol |
+| `<leader>cd` | Show diagnostic|
+| `<leader>cs` | Document symbols |
+| `<leader>cw` | Workspace symbols |
+
+**Diagnostics (<leader>d):**
+
+| Keymap | Description |
+|--------|-------------|
+| `[d` | Previous diagnostic |
+| `]d` | Next diagnostic |
+
+**Other:**
+
+| Keymap | Description |
+|--------|-------------|
+| `<C-k>` | Signature help (insert mode) |
 
 **Commands:**
 - `:Mason` - Open Mason UI to manage LSP servers

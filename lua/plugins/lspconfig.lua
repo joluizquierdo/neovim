@@ -15,22 +15,18 @@ return {
                 map('gD', vim.lsp.buf.declaration, 'Go to declaration')
                 map('gr', vim.lsp.buf.references, 'Go to references')
                 map('gI', vim.lsp.buf.implementation, 'Go to implementation')
-                map('<leader>D', vim.lsp.buf.type_definition, 'Type definition')
                 
-                -- Symbols
-                map('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'Document symbols')
-                map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace symbols')
-                
-                -- Code actions
+                -- Code actions (leader>c group)
                 map('<leader>ca', vim.lsp.buf.code_action, 'Code action')
-                map('<leader>rn', vim.lsp.buf.rename, 'Rename')
+                map('<leader>cr', vim.lsp.buf.rename, 'Rename')
+                map('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'Document symbols')
+                map('<leader>cw', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace symbols')
                 
                 -- Documentation
                 map('K', vim.lsp.buf.hover, 'Hover documentation')
                 map('<C-k>', vim.lsp.buf.signature_help, 'Signature help')
                 
-                -- Diagnostics
-                map('<leader>e', vim.diagnostic.open_float, 'Show diagnostic')
+                map('<leader>cd', vim.diagnostic.open_float, 'Show diagnostic')
                 map('[d', vim.diagnostic.goto_prev, 'Previous diagnostic')
                 map(']d', vim.diagnostic.goto_next, 'Next diagnostic')
                 

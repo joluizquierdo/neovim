@@ -22,13 +22,11 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 -- Yank to system clipboard
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
-vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set({"n", "v"}, "<leader>y", "\"+y", {desc = "Yank to system cliptboard"})
+vim.keymap.set("n", "<leader>Y", "\"+Y", {desc = "Yank to system clipboard"})
 
 -- Delete without saving to the buffer
-vim.keymap.set("n", "<leader>d", "\"_d")
-vim.keymap.set("v", "<leader>d", "\"_d")
+vim.keymap.set({"n", "v"}, "<leader>d", "\"_d", { desc = "Delete without clipboard" })
 
 -- Avoid loosing changes when your in V-BLOCK, you press 'I' to
 -- add some changes vertically
@@ -38,9 +36,9 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
 
 -- Replace current word in all the file
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Replace word under cursor"})
 -- make current file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true , desc = "Make current file executable"})
 
 -- Close current buffer and goes to the previous one
 vim.keymap.set('n', '<leader>bd', ':bp | bd #<CR>', { silent = true, desc = "Delete buffer, keep window" })

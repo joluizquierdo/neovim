@@ -28,14 +28,13 @@ Quick reference for all keybindings and shortcuts in this configuration.
 | `gD` | Normal | Go to declaration | LSP |
 | `gr` | Normal | Go to references | LSP |
 | `gI` | Normal | Go to implementation | LSP |
-| `<leader>D` | Normal | Type definition | LSP |
-| `<leader>ds` | Normal | Document symbols (Telescope) | LSP |
-| `<leader>ws` | Normal | Workspace symbols (Telescope) | LSP |
 | `<leader>ca` | Normal | Code action | LSP |
-| `<leader>rn` | Normal | Rename symbol | LSP |
+| `<leader>cr` | Normal | Rename symbol | LSP |
+| `<leader>cd` | Normal | Show diagnostic | LSP |
+| `<leader>cs` | Normal | Document symbols (Telescope) | LSP |
+| `<leader>cw` | Normal | Workspace symbols (Telescope) | LSP |
 | `K` | Normal | Hover documentation | LSP |
 | `<C-k>` | Insert | Signature help | LSP |
-| `<leader>e` | Normal | Show diagnostic | LSP |
 | `[d` | Normal | Previous diagnostic | LSP |
 | `]d` | Normal | Next diagnostic | LSP |
 
@@ -64,7 +63,7 @@ Quick reference for all keybindings and shortcuts in this configuration.
 | Keymap | Mode | Description | Source |
 |--------|------|-------------|--------|
 | `<leader>ha` | Normal | Add current file to Harpoon | Harpoon |
-| `<leader>h` | Normal | List Harpoon marks (Telescope) | Harpoon |
+| `<leader>hl` | Normal | List Harpoon marks (Telescope) | Harpoon |
 | `<leader>he` | Normal | Edit Harpoon marks (manage menu) | Harpoon |
 | `<leader>1` | Normal | Jump to Harpoon file 1 | Harpoon |
 | `<leader>2` | Normal | Jump to Harpoon file 2 | Harpoon |
@@ -101,6 +100,13 @@ Quick reference for all keybindings and shortcuts in this configuration.
 | `<leader>tw` | Normal | Toggle word diff | Gitsigns |
 | `<leader>tg` | Normal | Toggle git signs | Gitsigns |
 | `ig` | Operator, Visual | Select git hunk | Gitsigns |
+
+### 🔑 Keymap Discovery (Which-Key)
+
+| Keymap | Mode | Description | Source |
+|--------|------|-------------|--------|
+| `<leader>?` | Normal | Show buffer-local keymaps | Which-Key |
+| `<leader>` (wait) | Normal | Show all leader key commands | Which-Key |
 
 ### ⏪ Undo History (Undotree)
 
@@ -223,6 +229,12 @@ Quick reference for all keybindings and shortcuts in this configuration.
 - Expand all: Press `zR` to open everything
 - Navigate: Use `zj` and `zk` to jump between foldable sections
 - All folds are open by default (`foldlevel = 99`)
+
+### Which-Key Helper
+- Press `<Space>` (leader key) and pause for ~500ms to see all available commands
+- Commands are organized by category with visual icons
+- Press `<leader>?` to see all buffer-specific keymaps
+- Great for discovering keybindings without memorizing everything
 
 ---
 
