@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 vim.opt.nu = true -- Enable line numbers
 vim.opt.relativenumber = true -- relative numbers
 
