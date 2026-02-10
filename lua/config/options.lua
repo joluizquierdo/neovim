@@ -27,3 +27,15 @@ vim.opt.scrolloff = 15
 
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
+
+-- Enable spell checking for markdown files
+vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter', 'BufWinEnter' }, {
+    pattern = { '*.md', '*.markdown' },
+    callback = function()
+        -- Only enable for markdown files
+        if vim.bo.filetype == 'markdown' then
+            vim.opt_local.spell = true
+            vim.opt_local.spelllang = 'en_us,es'  -- English + Spanish
+        end
+    end,
+})

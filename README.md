@@ -15,6 +15,7 @@ in the end things break, and even though the lazyvim team does a magnificent
 work it's kind of difficult to solve and troubleshoot some of those errors 
 sometimes.
 
+
 Thus, following [ThePrimeagen's](https://www.youtube.com/@ThePrimeagen/videos)
 advice and way of doing things, I came up with my minimal neovim setup inspired 
 by their setup and wisdom.
@@ -170,7 +171,7 @@ Completions appear automatically as you type with intelligent ranking and typo r
 
 **Features:**
 - ⚡ **High performance** - Rust-based fuzzy matcher (0.5-4ms)
-- 🎯 **Typo resistant** - Fuzzy matching with frecency and proximity bonus
+- 🎯 **Typo resistant** - Fuzzy matching with frequency and proximity bonus
 - 📚 **Automatic documentation** - Shows popup with details and examples
 - 🔧 **LSP integration** - Full LSP completion support
 - 📦 **Batteries included** - Works out of the box with sensible defaults
@@ -343,6 +344,46 @@ All custom keymaps are defined in `lua/config/keymaps.lua`:
 - Keeps cursor in middle of screen while navigating
 - Reduces eye movement and improves focus
 - Especially useful when searching with `/`
+
+### ✍️ Spell Checking
+
+Built-in spell checking automatically enabled for markdown files (`.md`, `.markdown`).
+
+| Keymap | Mode | Description |
+|--------|------|-------------|
+| `z=` | Normal | Show spelling suggestions for word under cursor |
+| `]s` | Normal | Jump to next misspelled word |
+| `[s` | Normal | Jump to previous misspelled word |
+| `zg` | Normal | Add word to personal dictionary |
+| `zug` | Normal | Remove word from dictionary |
+| `zw` | Normal | Mark word as incorrect |
+
+**Features:**
+- Automatically enabled for markdown files
+- Supports multiple languages: English (en_us) and Spanish (es)
+- Misspelled words appear underlined
+- Personal dictionary stored in `~/.config/nvim/spell/`
+
+**Manual Commands:**
+- `:set spell` - Enable spell checking for current buffer
+- `:set nospell` - Disable spell checking
+- `:set spelllang=en_us` - Change language (en_us, es, en_gb, etc.)
+- `:set spelllang=en_us,es` - Check multiple languages
+
+**Usage Example:**
+1. Open a markdown file (spell checking activates automatically)
+2. Misspelled words appear underlined
+3. Place cursor on misspelled word and press `z=` to see suggestions
+4. Select suggestion with number key or `j/k` + Enter
+
+**Customizing Languages:**
+
+Edit `lua/config/options.lua` and modify the spelllang setting:
+```lua
+vim.opt_local.spelllang = 'en_us,es'  -- Add/remove languages as needed
+```
+
+**Available Languages:** en_us, en_gb, es, fr, de, it, pt, ru, and many more. See `:help spell` for full list.
 
 ## Configuration Options
 

@@ -127,6 +127,17 @@ Quick reference for all keybindings and shortcuts in this configuration.
 | `<leader>x` | Normal | Make current file executable | Custom |
 | `Q` | Normal | Disabled (prevents Ex mode) | Custom |
 
+### ✍️ Spell Checking (Markdown)
+
+| Keymap | Mode | Description | Source |
+|--------|------|-------------|--------|
+| `z=` | Normal | Show spelling suggestions | Built-in |
+| `]s` | Normal | Jump to next misspelled word | Built-in |
+| `[s` | Normal | Jump to previous misspelled word | Built-in |
+| `zg` | Normal | Add word to dictionary | Built-in |
+| `zug` | Normal | Remove word from dictionary | Built-in |
+| `zw` | Normal | Mark word as incorrect | Built-in |
+
 ---
 
 ## 📝 Quick Tips
@@ -158,6 +169,14 @@ Quick reference for all keybindings and shortcuts in this configuration.
 - `<C-d>`, `<C-u>`, `n`, `N` keep cursor in middle of screen
 - Reduces eye movement and improves focus
 - Especially useful when searching with `/`
+
+### Spell Checking
+- Automatically enabled for markdown files (.md, .markdown)
+- Supports English and Spanish (en_us, es)
+- Place cursor on misspelled word (underlined) and press `z=` for suggestions
+- Use `]s` and `[s` to navigate between errors
+- Add words to your personal dictionary with `zg`
+- Commands: `:set spell` (enable), `:set nospell` (disable), `:set spelllang=en_us` (change language)
 
 ---
 
