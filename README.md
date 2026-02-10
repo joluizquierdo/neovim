@@ -111,57 +111,29 @@ This configuration uses a **two-layer indentation system**:
 ### 🤖 OpenCode (AI Coding Assistant)
 In-editor AI assistant powered by Claude for code generation, refactoring, and questions.
 
-| Keymap | Description |
-|--------|-------------|
-| `<leader>oa` | Ask OpenCode (with current context) |
-| `<leader>om` | Execute OpenCode action menu |
-| `<leader>ot` | Toggle OpenCode panel |
-| `<leader>or` | Add visual range to OpenCode |
-| `<leader>ol` | Add current line to OpenCode |
-| `<leader>ou` | Scroll OpenCode panel up |
-| `<leader>od` | Scroll OpenCode panel down |
-
 **Features:**
-- Ask questions about code with `<leader>oa`
-- Select from common actions with `<leader>om`
-- Send code ranges to OpenCode with `<leader>or` in visual mode
+- Ask questions about code and get context-aware responses
+- Select from common actions via action menu
+- Send code ranges to OpenCode for analysis
 - Persistent chat history across sessions
 - Context-aware suggestions using `@this` prefix
 
 ### 🍿 Snacks.nvim (UI Utilities)
 Lightweight UI utilities library providing input prompts, pickers, and terminal windows. Used as backend for OpenCode plugin.
 
-**Features:**
-- Input prompts for interactive dialogs
-- Picker interface for selections
-- Terminal integration
-
 **Note:** Only input, picker, and terminal modules are enabled. This plugin runs transparently in the background.
 
 ### 🔭 Telescope (Fuzzy Finder)
-| Keymap | Description |
-|--------|-------------|
-| `<leader>pf` | Find files (all files) |
-| `<leader>pb` | Find buffers |
-| `<Ctrl-p>` | Find git tracked files |
-| `<leader>ps` | Grep search (prompt for search term) |
+Fast fuzzy finder for files, buffers, and text search using Telescope.
+
+**Features:**
+- Find files (all files or git-tracked only)
+- Search through open buffers
+- Grep search with interactive prompt
+- Integration with LSP symbols and diagnostics
 
 ### ⚡ Blink Completion (blink.cmp)
-**Performant, batteries-included autocompletion plugin** with fuzzy matching and multiple sources.
-
-Completions appear automatically as you type with intelligent ranking and typo resistance.
-
-#### Keymaps (preset = 'enter')
-
-**In Insert Mode:**
-| Keymap | Description |
-|--------|-------------|
-| `<CR>` (Enter) | Accept selected completion |
-| `<C-Space>` | Open completion menu / Show documentation |
-| `<C-n>` or `↓` | Select next item |
-| `<C-p>` or `↑` | Select previous item |
-| `<C-e>` | Close completion menu |
-| `<C-k>` | Toggle signature help |
+Performant, batteries-included autocompletion plugin with fuzzy matching and multiple sources.
 
 **Completion Sources:**
 - **LSP** - Language server suggestions (functions, variables, types)
@@ -185,54 +157,20 @@ Completions appear automatically as you type with intelligent ranking and typo r
 ### 🎯 Harpoon (Quick File Navigation)
 Mark and quickly navigate between frequently used files.
 
-| Keymap | Description |
-|--------|-------------|
-| `<leader>ha` | Add current file to Harpoon |
-| `<leader>h` | List Harpoon marks in Telescope (read-only) |
-| `<leader>he` | Edit Harpoon marks (manage menu) |
-| `<leader>1-4` | Jump to Harpoon file 1-4 |
-| `<leader>hp` | Previous Harpoon file |
-| `<leader>hn` | Next Harpoon file |
-
-**Managing marks (in edit menu with `<leader>he`):**
-- `j/k` or arrows - Navigate
-- `Enter` - Open file
-- `d` or `dd` - Delete mark
-- Visual select + move - Reorder marks
-- `q` or `<Esc>` - Close and save
+**Features:**
+- Add current file to marks
+- List all marks in Telescope
+- Edit marks with interactive menu
+- Jump to marks by number (1-4)
+- Navigate between marks sequentially
 
 ### 🌳 LazyGit (Git Integration)
-Terminal UI for git operations within Neovim.
-
-| Keymap | Description |
-|--------|-------------|
-| `<leader>gg` | Open LazyGit |
-
-**In LazyGit:**
-- `?` - Show help/keybindings
-- `q` - Quit LazyGit
+Terminal UI for git operations within Neovim. Press `?` inside LazyGit to see all available commands.
 
 ### 🔧 LSP (Language Server Protocol)
-Provides IDE-like features: autocomplete, go-to-definition, diagnostics, etc.
+Provides IDE-like features: autocomplete, go-to-definition, diagnostics, refactoring, and more.
 
 **Auto-installed servers:** lua_ls, pyright, ts_ls, gopls, rust_analyzer, terraformls, yamlls, jsonls, bashls
-
-| Keymap | Description |
-|--------|-------------|
-| `gd` | Go to definition |
-| `gD` | Go to declaration |
-| `gr` | Go to references |
-| `gI` | Go to implementation |
-| `<leader>D` | Type definition |
-| `<leader>ds` | Document symbols (Telescope) |
-| `<leader>ws` | Workspace symbols (Telescope) |
-| `<leader>ca` | Code action |
-| `<leader>rn` | Rename symbol |
-| `K` | Hover documentation |
-| `<Ctrl-k>` | Signature help |
-| `<leader>e` | Show diagnostic |
-| `[d` | Previous diagnostic |
-| `]d` | Next diagnostic |
 
 **Commands:**
 - `:Mason` - Open Mason UI to manage LSP servers
@@ -241,122 +179,30 @@ Provides IDE-like features: autocomplete, go-to-definition, diagnostics, etc.
 - `:LspRestart` - Restart LSP servers
 
 ### ⏪ Undotree (Undo History)
-Visualize and navigate your undo history as a tree.
-
-| Keymap | Description |
-|--------|-------------|
-| `<leader>u` | Toggle undotree panel |
-
-**In undotree panel:**
-- `j/k` - Navigate through undo history
-- `Enter` - Restore to selected state
-- View timestamps and change previews
-- `q` - Close panel
+Visualize and navigate your undo history as a tree. Shows timestamps and change previews.
 
 ### 🌲 TreeSitter (Syntax Highlighting & Indentation)
-Provides advanced syntax highlighting and language-aware auto-indentation.
-
-| Command | Description |
-|---------|-------------|
-| `:InspectTree` | Show syntax tree for current buffer |
-| `:Inspect` | Show treesitter node under cursor |
-| `:TSInstall <lang>` | Install parser for language |
-| `:TSUpdate` | Update all installed parsers |
+Provides advanced syntax highlighting, language-aware auto-indentation, and code folding.
 
 **Installed Parsers:** lua, python, go, rust, typescript, javascript, bash, zsh, html, helm, terraform, dockerfile, json, yaml, vim, vimdoc
 
-**Indentation Features:**
-- Automatically enables TreeSitter-based indentation for files with available parsers
-- Falls back to `smartindent` for languages without TreeSitter parsers
-- Respects your tab settings (4 spaces per indent level)
-- Use `=` in visual mode or `gg=G` to auto-indent entire file
+**Features:**
+- **Syntax highlighting** - Advanced, semantic syntax highlighting
+- **Indentation** - Language-aware auto-indentation (use `=` to reindent)
+- **Code folding** - TreeSitter-based folding for functions, classes, blocks
+- Falls back to basic features for languages without parsers
+
+**Commands:**
+- `:InspectTree` - Show syntax tree for current buffer
+- `:Inspect` - Show treesitter node under cursor
+- `:TSInstall <lang>` - Install parser for language
+- `:TSUpdate` - Update all installed parsers
 
 ### 🎨 Kanagawa (Colorscheme)
 Active colorscheme. Auto-loads on startup.
 
-### General Keymaps
-
-All custom keymaps are defined in `lua/config/keymaps.lua`:
-
-#### Navigation & Window Management
-| Keymap | Mode | Description |
-|--------|------|-------------|
-| `<leader>pv` | Normal | Open file explorer (netrw) |
-| `<leader>qq` | Normal | Quit all windows |
-
-#### Moving & Editing Text
-| Keymap | Mode | Description |
-|--------|------|-------------|
-| `J` | Visual | Move selected lines down (maintains indentation) |
-| `K` | Visual | Move selected lines up (maintains indentation) |
-| `J` | Normal | Join line below with space, keep cursor position |
-| `<C-d>` | Normal | Half-page down, cursor stays centered |
-| `<C-u>` | Normal | Half-page up, cursor stays centered |
-| `n` | Normal | Next search result, cursor stays centered |
-| `N` | Normal | Previous search result, cursor stays centered |
-
-#### Clipboard & Registers
-| Keymap | Mode | Description |
-|--------|------|-------------|
-| `<leader>y` | Normal/Visual | Yank to system clipboard |
-| `<leader>Y` | Normal | Yank line to system clipboard |
-| `<leader>p` | Visual | Paste without losing clipboard content |
-| `<leader>d` | Normal/Visual | Delete without saving to clipboard |
-
-#### Find & Replace
-| Keymap | Mode | Description |
-|--------|------|-------------|
-| `<leader>s` | Normal | Find & replace word under cursor (interactive) |
-
-#### Utility
-| Keymap | Mode | Description |
-|--------|------|-------------|
-| `<C-c>` | Insert | Exit insert mode (same as Esc, fixes visual-block mode) |
-| `<leader>x` | Normal | Make current file executable (chmod +x) |
-| `Q` | Normal | Disabled (prevents accidental Ex mode) |
-
-#### Keymap Tips & Examples
-
-**Moving Lines (Visual J/K):**
-- Select lines with `V` (visual-line mode)
-- Press `J` to move down or `K` to move up
-- Keeps selection active - press multiple times to move further
-- Auto-indents moved lines
-
-**Smart Paste (`<leader>p`):**
-- Yank text with `y`
-- Select text you want to replace with visual mode
-- Press `<leader>p` to paste without losing your yanked text
-- Useful when replacing multiple occurrences
-
-**Find & Replace (`<leader>s`):**
-- Place cursor on word you want to replace
-- Press `<leader>s`
-- Type replacement text and press Enter
-- Interactive - shows matches as you type
-
-**System Clipboard (`<leader>y`):**
-- Works like normal `y` but copies to system clipboard
-- Paste in other applications with Cmd+V (Mac) or Ctrl+V (Linux/Windows)
-- Use `<leader>Y` to copy entire line
-
-**Centered Scrolling (`<C-d>`, `<C-u>`, `n`, `N`):**
-- Keeps cursor in middle of screen while navigating
-- Reduces eye movement and improves focus
-- Especially useful when searching with `/`
-
 ### ✍️ Spell Checking
-
 Built-in spell checking automatically enabled for markdown files (`.md`, `.markdown`).
-
-| Keymap | Mode | Description |
-|--------|------|-------------|
-| `z=` | Normal | Show spelling suggestions for word under cursor |
-| `]s` | Normal | Jump to next misspelled word |
-| `[s` | Normal | Jump to previous misspelled word |
-| `zg` | Normal | Add word to personal dictionary |
-| `zug` | Normal | Remove word from dictionary |
-| `zw` | Normal | Mark word as incorrect |
 
 **Features:**
 - Automatically enabled for markdown files
@@ -370,20 +216,25 @@ Built-in spell checking automatically enabled for markdown files (`.md`, `.markd
 - `:set spelllang=en_us` - Change language (en_us, es, en_gb, etc.)
 - `:set spelllang=en_us,es` - Check multiple languages
 
-**Usage Example:**
-1. Open a markdown file (spell checking activates automatically)
-2. Misspelled words appear underlined
-3. Place cursor on misspelled word and press `z=` to see suggestions
-4. Select suggestion with number key or `j/k` + Enter
-
 **Customizing Languages:**
-
 Edit `lua/config/options.lua` and modify the spelllang setting:
 ```lua
 vim.opt_local.spelllang = 'en_us,es'  -- Add/remove languages as needed
 ```
 
 **Available Languages:** en_us, en_gb, es, fr, de, it, pt, ru, and many more. See `:help spell` for full list.
+
+### 📁 Code Folding
+Smart code folding powered by TreeSitter syntax trees. Folds are automatically detected based on language structure (functions, classes, blocks, etc.).
+
+**Features:**
+- TreeSitter-based folding for supported languages
+- Manual folding fallback for languages without parsers
+- All folds open by default (`foldlevel = 99`)
+- Folds preserved when switching buffers
+
+**Configuration:**
+Folding is configured in `lua/config/options.lua`. To disable, comment out or remove the `vim.api.nvim_create_autocmd` block for folding.
 
 ## Configuration Options
 
@@ -431,19 +282,24 @@ All vim options are configured in `lua/config/options.lua`:
 
 ## Useful Commands
 
+**Plugin Management:**
+```vim
+:Lazy               " Open lazy.nvim plugin manager UI
+:Lazy sync          " Update all plugins
+```
+
+**Health Check:**
+```vim
+:checkhealth        " Check Neovim health
+:messages           " View startup messages/errors
+```
+
 **Netrw (File Explorer):**
 - `<Ctrl-L>` - Refresh file listing
 - `%` - Create new file
 - `d` - Create new directory
 - `D` - Delete file/directory
 - `-` - Go up one directory
-
-```vim
-:Lazy               " Open lazy.nvim plugin manager UI
-:Lazy sync          " Update all plugins
-:checkhealth        " Check Neovim health
-:messages           " View startup messages/errors
-```
 
 ## Adding New Plugins
 
@@ -464,6 +320,7 @@ To add support for a new language, you **must** complete both steps below:
 **1a.** Find the parser name for your language at [https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
 ](https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
 )
+
 **1b.** Edit `lua/plugins/nvim-treesitter.lua` and add the language to the `install()` list:
 
 ```lua
