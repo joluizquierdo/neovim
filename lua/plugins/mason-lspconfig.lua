@@ -19,7 +19,7 @@ return {
                 'jsonls',        -- JSON
                 'bashls',        -- Bash
             },
-            
+
             -- Handlers for configuring LSP servers with blink.cmp capabilities
             handlers = {
                 -- Default handler - applies to all servers
@@ -27,6 +27,24 @@ return {
                     local capabilities = require('blink.cmp').get_lsp_capabilities()
                     require('lspconfig')[server_name].setup({
                         capabilities = capabilities
+                    })
+                end,
+
+                -- Rust-analyzer specific configuration
+                ['rust_analyzer'] = function()
+                    local capabilities = require('blink.cmp').get_lsp_capabilities()
+                    require('lspconfig').rust_analyzer.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            ['rust-analyzer'] = {
+                                -- Fixes issue where diagnostics persist after fixing errors
+                                checkOnSave = true,
+                                -- Use clippy for additional lints
+                                check = {
+                                    command = "clippy"
+                                }
+                            }
+                        }
                     })
                 end,
             },
