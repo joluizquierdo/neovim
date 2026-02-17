@@ -286,6 +286,7 @@ When in netrw (opened with `<leader>pv`):
 - `d` - Create new directory
 - `D` - Delete file/directory
 - `-` - Go up one directory
+- `R` - Rename a file
 
 ---
 
