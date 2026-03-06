@@ -1,5 +1,6 @@
-vim.opt.nu = true -- Enable line numbers
+vim.opt.number = true -- Enable line numbers
 vim.opt.relativenumber = true -- relative numbers
+vim.opt.cursorline = true -- higlight current line
 
 
 vim.opt.tabstop = 4 -- Display actuals \t as 4 spaces in the screen
@@ -8,6 +9,7 @@ vim.opt.softtabstop = 4 -- Tab/Backsapce in Insert mode moves 4 spaces
 vim.opt.expandtab = true -- Tab key insert 4 spaces instead of \t
 
 vim.opt.smartindent = true -- Try using smart indent if treesitter indenting is not available
+
 
 vim.opt.wrap = false -- Do not wrap lines
 
@@ -18,12 +20,12 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+vim.opt.hlsearch = true -- higlight search matcheo
+vim.opt.incsearch = true -- show matches as you type
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 15
+vim.opt.scrolloff = 15 -- keep some lines above below cursor
 
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
@@ -40,17 +42,18 @@ vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter', 'BufWinEnter' }, {
     end,
 })
 
--- Enable folding to use treesitter otherwise fallback to manual
-vim.api.nvim_create_autocmd({ "FileType" }, {
-    callback = function()
-        -- Check if treesitter parser is available for current buffer
-        if pcall(vim.treesitter.get_parser, 0) then
-            vim.opt_local.foldmethod = "expr"
-            vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-        else
-            vim.opt_local.foldmethod = "manual"
-        end
-    end,
-})
-vim.opt.foldlevel = 99
+-- Folding: use treesitter when a parser is available, otherwise fall back to
+-- expr
+vim.opt.foldmethod = "expr" -- fall back to expr
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- use treesitter
+vim.opt.foldlevel = 99 -- start with all folds open
 
+vim.opt.ignorecase = true -- ignore case when searching
+vim.opt.smartcase = true -- case sensitive if uppercase in string
+
+vim.opt.autoread = true -- auto-reload changes made outside of neovim
+
+vim.opt.iskeyword:append("-") -- include - in words
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true

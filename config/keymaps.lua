@@ -1,5 +1,8 @@
+-- Space for leader
+vim.g.mapleader = " "
+
 -- Open FileTree in normal mode with a shortcut instead of :Ex
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "file tree" })
 -- Quit all windows
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
