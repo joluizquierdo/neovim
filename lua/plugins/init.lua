@@ -25,3 +25,6 @@ require("plugins.which-key")
 -- Make neovim better understand and navigate the code
 -- improve folding, indentation and highlight
 require("plugins.nvim-treesitter")
+
+-- Language Protocol Server config
+require("plugins.nvim-lspconfig")
