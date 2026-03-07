@@ -2,7 +2,6 @@ vim.opt.number = true -- Enable line numbers
 vim.opt.relativenumber = true -- relative numbers
 vim.opt.cursorline = true -- higlight current line
 
-
 vim.opt.tabstop = 4 -- Display actuals \t as 4 spaces in the screen
 vim.opt.shiftwidth = 4 -- Using '>', '<' or '=' when editing a buffer adds spaces instead of \t
 vim.opt.softtabstop = 4 -- Tab/Backsapce in Insert mode moves 4 spaces
@@ -30,19 +29,6 @@ vim.opt.scrolloff = 15 -- keep some lines above below cursor
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
--- Enable spell checking for markdown files
-vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter', 'BufWinEnter' }, {
-    pattern = { '*.md', '*.markdown' },
-    callback = function()
-        -- Only enable for markdown files
-        if vim.bo.filetype == 'markdown' then
-            vim.opt_local.spell = true
-            vim.opt_local.spelllang = 'en_us,es'  -- English + Spanish
-        end
-    end,
-})
-
--- Folding: use treesitter when a parser is available, otherwise fall back to
 -- expr
 vim.opt.foldmethod = "expr" -- fall back to expr
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- use treesitter

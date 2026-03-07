@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 -- Open FileTree in normal mode with a shortcut instead of :Ex
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "file tree" })
 -- Quit all windows
-vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+vim.keymap.set("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Quit all" })
 
 -- Move selected lines around text while keeping the indentation
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
