@@ -16,6 +16,8 @@ require("plugins.telescope")
 -- Bookmark files within a project
 require("plugins.harpoon")
 
--- Show a nice menu when pressing leader key
+-- Manage modification history within a file
+require("plugins.undotree")
 
+-- Show a nice menu when pressing leader key
 require("plugins.which-key")
