@@ -26,17 +26,26 @@ local function get_git_branch()
     return "🌱 " .. output[1]
 end
 
--- Helper function to format the file name and its status
 local function get_file_info()
-    local filename = vim.fn.expand('%:t') -- Get just the file name
+    -- 1. Get the window ID being drawn (fallback to current window if nil)
+    local winid = vim.g.statusline_winid or vim.api.nvim_get_current_win()
+
+    -- 2. Get the buffer associated with that window
+    local bufnr = vim.api.nvim_win_get_buf(winid)
+
+    -- 3. Get the full file path and extract just the tail (filename)
+    local filepath = vim.api.nvim_buf_get_name(bufnr)
+    local filename = vim.fn.fnamemodify(filepath, ':t')
+
     if filename == "" then
         filename = "👻 [No Name]"
     else
         filename = "📄 " .. filename
     end
 
-    local modified = vim.bo.modified and " 💾" or ""
-    local readonly = vim.bo.readonly and " 🔒" or ""
+    -- 4. Check modified and readonly states for this specific buffer
+    local modified = vim.bo[bufnr].modified and " 💾" or ""
+    local readonly = vim.bo[bufnr].readonly and " 🔒" or ""
 
     return filename .. modified .. readonly
 end
