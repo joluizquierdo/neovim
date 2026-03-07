@@ -29,7 +29,7 @@ vim.keymap.set({"n", "v"}, "<leader>y", "\"+y", {desc = "Yank to system cliptboa
 vim.keymap.set("n", "<leader>Y", "\"+Y", {desc = "Yank to system clipboard"})
 
 -- Delete without saving to the buffer
-vim.keymap.set({"n", "v"}, "<leader>d", "\"_d", { desc = "Delete without clipboard" })
+vim.keymap.set({"n", "v"}, "<leader>D", "\"_d", { desc = "Delete without saving" })
 
 -- Avoid loosing changes when your in V-BLOCK, you press 'I' to
 -- add some changes vertically

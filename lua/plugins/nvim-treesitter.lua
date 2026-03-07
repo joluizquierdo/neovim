@@ -43,10 +43,8 @@ vim.api.nvim_create_autocmd("FileType", {
             -- If successful (parser exists), enable treesitter indentation
             vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
             -- Use TreeSitter folding
-            vim.api.nvim_set_option_value("foldmethod", "expr", { buf = args.buf })
-            vim.api.nvim_set_option_value("foldexpr", "v:lua.vim.treesitter.foldexpr()", { buf = args.buf })
+            vim.opt_local.foldmethod = "expr"
+            vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
         end
     end,
 })
-
-

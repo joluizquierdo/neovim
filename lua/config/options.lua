@@ -9,7 +9,6 @@ vim.opt.expandtab = true -- Tab key insert 4 spaces instead of \t
 
 vim.opt.smartindent = true -- Try using smart indent if treesitter indenting is not available
 
-
 vim.opt.wrap = false -- Do not wrap lines
 
 -- Disable swap and backup anoying files
@@ -27,6 +26,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 15 -- keep some lines above below cursor
 
 vim.opt.updatetime = 50
+
 vim.opt.colorcolumn = "80"
 
 vim.opt.foldlevel = 99 -- start with all folds open
