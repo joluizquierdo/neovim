@@ -21,3 +21,7 @@ require("plugins.undotree")
 
 -- Show a nice menu when pressing leader key
 require("plugins.which-key")
+
+-- Make neovim better understand and navigate the code
+-- improve folding, indentation and highlight
+require("plugins.nvim-treesitter")

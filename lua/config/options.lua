@@ -29,9 +29,6 @@ vim.opt.scrolloff = 15 -- keep some lines above below cursor
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 
--- expr
-vim.opt.foldmethod = "expr" -- fall back to expr
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- use treesitter
 vim.opt.foldlevel = 99 -- start with all folds open
 
 vim.opt.ignorecase = true -- ignore case when searching
