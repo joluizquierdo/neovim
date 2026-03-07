@@ -13,6 +13,8 @@ require("which-key").setup({
         { "<leader>q", group = "quit" },
         { "<leader>b", group = "buffer" },
         { "<leader>t", group = "toggle" },
+        { "<leader>d", group = "diagnostics" },
+        { "<leader>l", group = "LSP" },
     },
     icons = {
         mappings = false,

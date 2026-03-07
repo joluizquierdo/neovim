@@ -31,3 +31,6 @@ require("plugins.nvim-lspconfig")
 
 -- Auto completion
 require("plugins.blink-cmp")
+
+-- AI agent integration
+require("plugins.opencode")
