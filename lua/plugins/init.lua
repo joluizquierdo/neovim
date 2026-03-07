@@ -10,8 +10,12 @@ require("plugins.mininvim")
 -- Show git signs
 require("plugins.gitsigns")
 
--- Fuzzy find
+-- Fuzzy find project files
 require("plugins.telescope")
 
+-- Bookmark files within a project
+require("plugins.harpoon")
+
 -- Show a nice menu when pressing leader key
+
 require("plugins.which-key")

@@ -1,0 +1,52 @@
+vim.pack.add({
+    -- Dependencies
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/nvim-telescope/telescope.nvim",
+
+    -- Package
+    {
+        src = "https://github.com/ThePrimeagen/harpoon",
+        version = "harpoon2"
+    }
+})
+
+-- Configuration
+local harpoon = require("harpoon")
+
+-- Basic setup with telescope integration
+harpoon:setup()
+
+-- Load telescope extension
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+-- Keymaps
+vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = "Harpoon add file" })
+vim.keymap.set("n", "<leader>he", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon edit files" })
+vim.keymap.set("n", "<leader>hl", function() toggle_telescope(harpoon:list()) end, { desc = "Harpoon list files" })
+
+-- Navigate to files
+vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end, { desc = "Harpoon file 1" })
+vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end, { desc = "Harpoon file 2" })
+vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end, { desc = "Harpoon file 3" })
+vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end, { desc = "Harpoon file 4" })
+vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end, { desc = "Harpoon file 5" })
+vim.keymap.set("n", "<leader>6", function() harpoon:list():select(6) end, { desc = "Harpoon file 6" })
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end, { desc = "Harpoon prev" })
+vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end, { desc = "Harpoon next" })
