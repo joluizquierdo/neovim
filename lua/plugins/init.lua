@@ -28,3 +28,6 @@ require("plugins.nvim-treesitter")
 
 -- Language Protocol Server config
 require("plugins.nvim-lspconfig")
+
+-- Auto completion
+require("plugins.blink-cmp")
