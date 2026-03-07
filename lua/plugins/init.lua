@@ -13,3 +13,5 @@ require("plugins.gitsigns")
 -- Fuzzy find
 require("plugins.telescope")
 
+-- Show a nice menu when pressing leader key
+require("plugins.which-key")
