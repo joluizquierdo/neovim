@@ -1,6 +1,4 @@
--- Plugin Installation
 vim.pack.add({
-    -- plugin
     {
         src = "https://github.com/nvim-treesitter/nvim-treesitter",
         version = "main",

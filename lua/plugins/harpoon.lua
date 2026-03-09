@@ -10,7 +10,6 @@ vim.pack.add({
     }
 })
 
--- Configuration
 local harpoon = require("harpoon")
 
 -- Basic setup with telescope integration
@@ -36,7 +35,8 @@ end
 
 -- Keymaps
 vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end, { desc = "Harpoon add file" })
-vim.keymap.set("n", "<leader>he", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon edit files" })
+vim.keymap.set("n", "<leader>he", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+    { desc = "Harpoon edit files" })
 vim.keymap.set("n", "<leader>hl", function() toggle_telescope(harpoon:list()) end, { desc = "Harpoon list files" })
 
 -- Navigate to files

@@ -1,6 +1,6 @@
 vim.pack.add({
     -- dependencies
-    "https://github.com/rafamadriz/friendly-snippets",           -- for installing LSPs
+    "https://github.com/rafamadriz/friendly-snippets", -- for installing LSPs
     -- plugin
     {
         src = "https://github.com/Saghen/blink.cmp",

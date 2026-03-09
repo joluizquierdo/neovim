@@ -1,14 +1,14 @@
 -- Helper function to get the current Vim mode
 local function get_mode()
     local modes = {
-        n  = "🟢 N",
-        i  = "🔵 I",
-        v  = "🟣 V",
-        V  = "🟣 V-L",
+        n       = "🟢 N",
+        i       = "🔵 I",
+        v       = "🟣 V",
+        V       = "🟣 V-L",
         ["\22"] = "🟣 V-B", -- ^V (Visual Block)
-        c  = "🟠 CMD",
-        t  = "🔴 TRM",
-        R  = "🔴 RPLC",
+        c       = "🟠 CMD",
+        t       = "🔴 TRM",
+        R       = "🔴 RPLC",
     }
     local current_mode = vim.api.nvim_get_mode().mode
     return modes[current_mode] or ("⚪ " .. current_mode)
@@ -78,4 +78,3 @@ end
 
 -- Assign the statusline to call our global Lua function
 vim.opt.statusline = "%!v:lua.Statusline()"
-

@@ -1,7 +1,5 @@
--- Plugin Installation
 vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
 
--- Configuration
 local gitsigns = require('gitsigns')
 gitsigns.setup({
     signs = {

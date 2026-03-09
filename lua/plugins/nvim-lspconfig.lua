@@ -14,6 +14,7 @@ local diagnostic_signs = {
     Hint = "💡",
     Info = "ℹ️",
 }
+
 vim.diagnostic.config({
     virtual_text = { prefix = "●", spacing = 4 },
     signs = {
