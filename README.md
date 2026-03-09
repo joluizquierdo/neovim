@@ -56,12 +56,16 @@ his nice guide about Neovim setup in 2026 and explaining the virtues of Neovim
 
 ## Requirements
 
-- Neovim 0.12+
-- `git` (plugin manager fetches via git)
-- `ripgrep` (`rg`) — required by Telescope live grep and find files
-- `make` — required to compile the Telescope fzf-native extension on first install
-- `lua-language-server` — Lua LSP (installable via Mason: `:MasonInstall lua-ls`)
-- `luaformatter` — Lua formatter (install separately; not available through Mason)
+### Always required
+
+- **Neovim 0.12+**
+- **`git`** — plugin manager fetches plugins via git
+- **`ripgrep` (`rg`)** — Telescope uses it for `find_files` and `live_grep`
+- **`make` + a C compiler (`gcc` or `clang`)** — needed to compile the `telescope-fzf-native` C extension on first install/update
+- **A Nerd Font** — `blink.cmp` and `mini.icons` render glyphs from a Nerd Font; install one (e.g. [JetBrainsMono Nerd Font](https://www.nerdfonts.com/)) and set it in your terminal emulator
+- **`lazygit`** — For git management
+- **`opencode`** - AI agent integrated into Neovim
+- **`Node.js`** — required at runtime by `bashls` and `ts_ls`; install via `nvm` or your system package manager.
 
 ## Installation
 
