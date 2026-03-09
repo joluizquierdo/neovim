@@ -1,24 +1,24 @@
 -- Plugin Installation
-vim.pack.add({"https://github.com/lewis6991/gitsigns.nvim"})
+vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
 
 -- Configuration
 local gitsigns = require('gitsigns')
 gitsigns.setup({
     signs = {
-        add = { text = '┃' },
-        change = { text = '┃' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-        untracked = { text = '┆' },
+        add          = { text = '○' },
+        change       = { text = '◌' },
+        delete       = { text = '╌' },
+        topdelete    = { text = '╌' },
+        changedelete = { text = '◌' },
+        untracked    = { text = '·' },
     },
     signs_staged = {
-        add = { text = '┃' },
-        change = { text = '┃' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-        untracked = { text = '┆' },
+        add          = { text = '●' },
+        change       = { text = '◉' },
+        delete       = { text = '━' },
+        topdelete    = { text = '━' },
+        changedelete = { text = '◉' },
+        untracked    = { text = '•' },
     },
     signs_staged_enable = true,
     signcolumn = true,
@@ -58,55 +58,38 @@ gitsigns.setup({
         end
 
         -- Navigation
-        map('n', ']c', function()
+        map('n', ']h', function()
             if vim.wo.diff then
                 vim.cmd.normal({ ']c', bang = true })
             else
-                gitsigns.nav_hunk('next')
+                gitsigns.nav_hunk('next', { target = 'all' })
             end
         end, { desc = 'Next git hunk' })
 
-        map('n', '[c', function()
+        map('n', '[h', function()
             if vim.wo.diff then
                 vim.cmd.normal({ '[c', bang = true })
             else
-                gitsigns.nav_hunk('prev')
+                gitsigns.nav_hunk('prev', { target = 'all' })
             end
         end, { desc = 'Previous git hunk' })
 
-        -- Actions - using 'g' prefix instead of 'h'
-        map('n', '<leader>gs', gitsigns.stage_hunk, { desc = 'Git: Stage hunk' })
-        map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Git: Reset hunk' })
-
-        map('v', '<leader>gs', function()
-            gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-        end, { desc = 'Git: Stage hunk' })
-
-        map('v', '<leader>gr', function()
-            gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-        end, { desc = 'Git: Reset hunk' })
-
-        map('n', '<leader>gS', gitsigns.stage_buffer, { desc = 'Git: Stage buffer' })
-        map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Git: Reset buffer' })
-        map('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = 'Git: Undo stage hunk' })
-        map('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'Git: Preview hunk' })
-        map('n', '<leader>gi', gitsigns.preview_hunk_inline, { desc = 'Git: Preview hunk inline' })
+        map('n', '<leader>gi', gitsigns.preview_hunk_inline, { desc = 'Preview hunk inline' })
+        map('n', '<leader>gs', gitsigns.stage_hunk, { desc = 'Stage hunk' })
+        map('n', '<leader>gr', gitsigns.reset_hunk, { desc = 'Reset hunk' })
+        map('n', '<leader>gS', gitsigns.stage_buffer, { desc = 'Stage buffer' })
+        map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Reset buffer' })
 
         map('n', '<leader>gb', function()
             gitsigns.blame_line({ full = true })
         end, { desc = 'Git: Blame line' })
+        map('n', '<leader>gl', function()
+            gitsigns.blame_line({ full = true })
+        end, { desc = 'Git: Blame line' })
 
-        map('n', '<leader>gd', gitsigns.diffthis, { desc = 'Git: Diff this' })
-
-        map('n', '<leader>gD', function()
+        map('n', '<leader>gd', function()
             gitsigns.diffthis('~')
         end, { desc = 'Git: Diff against last commit' })
-
-        map('n', '<leader>gQ', function()
-            gitsigns.setqflist('all')
-        end, { desc = 'Git: Load all hunks to quickfix' })
-
-        map('n', '<leader>gq', gitsigns.setqflist, { desc = 'Git: Load hunks to quickfix' })
 
         -- Toggles
         map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = 'Toggle git blame' })
