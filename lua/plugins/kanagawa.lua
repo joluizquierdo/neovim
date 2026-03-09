@@ -1,24 +1,33 @@
-return {
-    -- This plugin is the colorscheme
-    'rebelot/kanagawa.nvim',
-    priority = 1001, -- Load before other plugins
-    config = function()
-        require('kanagawa').setup({}) -- default settings
-        vim.cmd('colorscheme kanagawa')
+vim.pack.add({ "https://github.com/rebelot/kanagawa.nvim" })
 
-        -- Override spell highlighting for better visibility
-        -- Uses underline + color which works in most terminals
-        vim.api.nvim_set_hl(0, 'SpellBad', {
-            undercurl = true,
-            underline = true,  -- Fallback if undercurl not supported
-            sp = '#E82424',    -- Red underline color
-            fg = '#E82424',    -- Red text color for maximum visibility
-        })
-        vim.api.nvim_set_hl(0, 'SpellCap', {
-            undercurl = true,
-            underline = true,
-            sp = '#DCA561',    -- Yellow for capitalization
-        })
+require('kanagawa').setup({
+    compile = false,  -- enable compiling the colorscheme
+    undercurl = true, -- enable undercurls
+    commentStyle = { italic = true },
+    functionStyle = {},
+    keywordStyle = { italic = true },
+    statementStyle = { bold = true },
+    typeStyle = {},
+    transparent = false,   -- do not set background color
+    dimInactive = false,   -- dim inactive window `:h hl-NormalNC`
+    terminalColors = true, -- define vim.g.terminal_color_{0,17}
+    colors = {             -- add/modify theme and palette colors
+        palette = {},
+        theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+    },
+    overrides = function(colors) -- add/modify highlights
+        return {}
     end,
+    -- themes could be wave, dragon or lotus
+    -- fall back to this theme is no background is
+    -- defined in the terminal to dark or light
+    theme = "wave",
 
-}
+    background = {     -- map the value of 'background' option to a theme
+        dark = "wave", -- try "dragon" !
+        light = "lotus"
+    },
+})
+
+-- setup must be called before loading
+vim.cmd("colorscheme kanagawa")

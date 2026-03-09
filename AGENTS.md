@@ -1,160 +1,65 @@
-# AGENTS.md - Neovim Configuration Development Guide
+# AGENTS.md — Neovim Configuration
 
-Guidelines for AI coding agents working on this Neovim configuration repository.
-
-## Primary Objectives
-
-1. **Documentation Excellence**: Every keymap and plugin feature must be documented
-2. **Correctness First**: All changes must work before being committed
-3. **Simplicity**: Favor simple, maintainable configurations over complex setups
-
-## Testing Commands
-
-No automated tests. Validate manually:
-
-```bash
-nvim                              # Test config loads
-nvim +checkhealth                 # Check all components
-nvim +":checkhealth vim.lsp"      # Check LSP
-nvim +messages                    # View startup errors
-```
-
-## File Structure
-
-```
-~/.config/nvim/
-├── init.lua                 # Entry point
-├── README.md                # Main docs (NO keymaps)
-├── cheatsheet/README.md     # ALL keymaps (single source of truth)
-├── lua/config/
-│   ├── options.lua          # Vim options
-│   └── keymaps.lua          # Global keymaps
-└── lua/plugins/*.lua        # One file per plugin
-```
-
-## Code Style
-
-### Plugin Configuration
-
-```lua
-# Simple (preferred)
-return {
-    'plugin/name',
-    keys = {
-        {'<leader>x', '<cmd>Command<cr>', desc = 'Description'},
-    },
-}
-
-# With setup
-return {
-    'plugin/name',
-    config = function()
-        require('plugin').setup({ })
-        vim.keymap.set('n', '<leader>x', func, { desc = 'Description' })
-    end,
-}
-```
-
-### Naming & Style
-
-- Variables/functions: `snake_case`
-- No type annotations
-- Always include `desc` in keymaps
-- Use `pcall` for operations that might fail
-- Prefer function wrappers over string commands in keymaps
-
-## Documentation Rules
-
-### CRITICAL: Keymap Documentation
-
-- **ALL keymaps** go in `cheatsheet/README.md` ONLY
-- **NO keymaps** in `README.md` (prevents duplication)
-
-### README.md Plugin Sections
-
-Each plugin section must include:
-1. Brief description (1-2 sentences)
-2. **Features list** (what it does, NO keymaps)
-3. Commands (if applicable)
-4. Usage examples (if complex)
-
-**Example:**
-```markdown
-### LazyGit (Git Integration)
-Terminal UI for git operations within Neovim.
-
-**Features:**
-- Auto-configured colorscheme
-- Integration with Neovim for commit messages
-- Opens in floating window
-
-**In LazyGit:**
-- `?` - Show help
-- `q` - Quit
-```
-
-### Cheatsheet Format
-
-```markdown
-| Keymap | Mode | Description | Source |
-|--------|------|-------------|--------|
-| `<leader>pf` | Normal | Find files | Telescope |
-```
-
-**Rules:**
-- Plain English descriptions
-- Sort by frequency of use
-- Include mode and source
-
-## Common Tasks
-
-### Adding a Plugin
-
-1. Create `lua/plugins/<plugin-name>.lua`
-2. Add keymaps with `desc` fields
-3. Test: `:Lazy sync` in Neovim
-4. Update README.md (features only)
-5. Update cheatsheet/README.md (keymaps)
-
-### Adding Language Support
-
-1. Add parser to `lua/plugins/nvim-treesitter.lua`
-2. Add LSP server to `lua/plugins/mason-lspconfig.lua`
-3. Restart Neovim
-4. Test with language file
-5. Update README.md language lists
-
-### Updating Documentation
-
-**After ANY config change:**
-1. Update README.md (features/commands, NO keymaps)
-2. Update cheatsheet/README.md (if keymaps changed) - **CRITICAL**
-3. Test keymaps manually
-
-**Workflow:**
-```
-1. Add keymap to lua/plugins/someplugin.lua
-2. Update README.md plugin features
-3. Update cheatsheet/README.md keymap table
-4. Test keymap works
-5. Commit together
-```
-
-## Simplification Principles
-
-1. Use default plugin settings when possible
-2. Minimize dependencies
-3. Lazy load with `keys`, `cmd`, or `ft`
-4. Start simple, optimize only if needed
-5. Remove unused features
-
-## Commit Messages
-
-Use conventional commits:
-- `feat: add rust language support`
-- `refactor: simplify telescope config`
-- `fix: treesitter indentation`
+Agent guidance for this repository. Load only the rule files relevant to your task.
 
 ---
 
-**Remember**: Documentation quality is the highest priority. Keymaps ONLY in cheatsheet.
+## Repository Overview
+
+Personal Neovim config written entirely in **Lua** (no VimL).
+Plugin manager: **`vim.pack`** — Neovim 0.12's built-in native package manager.
+Entry point: `init.lua` → `lua/config/` → `lua/plugins/` → `lua/utils/`.
+
+```
+.
+├── init.lua                   # Entry point
+├── nvim-pack-lock.json        # Plugin lockfile (pins git revisions)
+├── .luarc.json                # lua-language-server workspace config
+└── lua/
+    ├── config/
+    │   ├── options.lua        # vim.opt settings
+    │   ├── keymaps.lua        # Leader key + global keymaps
+    │   └── autocmds.lua       # Autocommands
+    ├── plugins/
+    │   ├── init.lua           # Loads all plugin files
+    │   ├── blink-cmp.lua      # Autocompletion
+    │   ├── gitsigns.lua       # Git hunk signs
+    │   ├── harpoon.lua        # File bookmarks
+    │   ├── kanagawa.lua       # Colorscheme
+    │   ├── mininvim.lua       # mini.nvim collection
+    │   ├── nvim-lspconfig.lua # LSP + Mason + conform + nvim-lint
+    │   ├── nvim-treesitter.lua
+    │   ├── opencode.lua       # AI agent
+    │   ├── snacks.lua         # Terminal, lazygit, picker
+    │   ├── telescope.lua      # Fuzzy finder
+    │   ├── undotree.lua
+    │   └── which-key.lua
+    └── utils/
+        └── statusline.lua     # Custom statusline (no plugin)
+```
+
+---
+
+## Rule Files
+
+Load these on demand based on the task at hand:
+
+| File | Load when… |
+|------|-----------|
+| `.agents/rules/code-style.md` | writing or reviewing any Lua code |
+| `.agents/rules/keymaps-autocmds.md` | adding/editing keymaps or autocommands |
+| `.agents/rules/plugins.md` | adding, removing, or configuring plugins |
+| `.agents/rules/tooling.md` | running formatters, linters, or diagnosing tool issues |
+| `.agents/rules/git.md` | creating commits or understanding commit history |
+| `.agents/rules/docs.md` | **always load** — rules for keeping README.md and CHEATSHEET.md up to date |
+
+---
+
+## Quick Reference
+
+- **Reload config:** `:source $MYVIMRC` inside Neovim
+- **Format a file:** `lua-format -i <file>` or `<leader>cf` in Neovim
+- **No test suite.** No Makefile. No CI.
+- **Never update plugins without user confirmation.** (`:pack update`)
+- **After adding a plugin:** commit the updated `nvim-pack-lock.json`
+- **Commit style:** `feat(scope): description` — see `.agents/rules/git.md`

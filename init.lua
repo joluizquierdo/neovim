@@ -1,13 +1,16 @@
--- Make sure to setup `mapleader` and `maplocalleader` before
--- load core config
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- load core config
 require("config.options")
 require("config.keymaps")
+require("config.autocmds")
 
--- load lazy package manager
-require("config.lazy")
+-- Ensure the Neovim cache directory exists before plugins
+local cache_dir = vim.fn.stdpath("cache")
+if vim.fn.isdirectory(cache_dir) == 0 then
+    vim.fn.mkdir(cache_dir, "p")
+end
+
+-- Plugins
+require("plugins")
+
+-- Utils
+require("utils.statusline")
