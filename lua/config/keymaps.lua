@@ -46,3 +46,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true , desc 
 -- Close current buffer and goes to the previous one
 vim.keymap.set('n', '<leader>bd', ':bp | bd #<CR>', { silent = true, desc = "Delete buffer, keep window" })
 
+-- Save current buffer
+vim.keymap.set("n", "<C-s>", ":w!<CR>", { desc = "Save current file" })
+
