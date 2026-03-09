@@ -39,6 +39,7 @@ vim.diagnostic.config({
 local function lsp_on_attach(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     if not client then
+        vim.notify("LSP not attached: client_id " .. ev.data.client_id .. " not found", vim.log.levels.WARN)
         return
     end
 
