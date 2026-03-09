@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter', 'BufWinEnter' }, {
         -- a : Enables automatic formatting of paragraphs. Every time you
         --     insert or delete text, Neovim will instantly reformat the
         --     entire paragraph in real-time to fit within the textwidth
-        vim.opt_local.formatoptions:append("tca")
+        vim.opt_local.formatoptions:append("t")
     end,
 })
 
