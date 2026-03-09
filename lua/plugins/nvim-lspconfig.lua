@@ -60,13 +60,13 @@ local function lsp_on_attach(ev)
     end
 
     opts.desc = "Go to declaration"
-    vim.keymap.set("n", "<leader>gd", vim.lsp.buf.declaration, opts)
+    vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
 
     opts.desc = "Go to definition"
-    vim.keymap.set("n", "<leader>gD", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
 
     opts.desc = "Go to definition in vsplit"
-    vim.keymap.set("n", "<leader>gS", function()
+    vim.keymap.set("n", "gS", function()
         vim.cmd("vsplit")
         vim.lsp.buf.definition()
     end, opts)
@@ -86,11 +86,12 @@ local function lsp_on_attach(ev)
         vim.diagnostic.jump({ count = -1 })
     end, opts)
 
-    opts.desc = ""
+    opts.desc = "Hover"
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    opts.desc = "Signature Help"
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 
-    opts.desc = ""
+    opts.desc = "Definitions"
     vim.keymap.set("n", "<leader>ld", function()
         require("telescope.builtin").lsp_definitions()
     end, opts)
