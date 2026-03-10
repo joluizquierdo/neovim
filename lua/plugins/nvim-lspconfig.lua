@@ -218,8 +218,8 @@ vim.keymap.set("n", "<leader>tf", "<cmd>FormatToggle<CR>", {
 -- =========================================
 local lint = require("lint")
 lint.linters_by_ft = {
-	terraform = { "tflint" },
-	tf = { "tflint" },
+	terraform = { "tflint", "tfsec" },
+	tf = { "tflint", "tfsec" },
 }
 
 -- Native autocommand to trigger linting on file enter, save, and exit insert mode
