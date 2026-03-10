@@ -1,8 +1,8 @@
 # Neovim Configuration
 
 > [!NOTE]
-> TL;DR: Minimal configuration inspired by ThePrimeagen wisdom
-> to only use what's really useful to my workflow.
+> TL;DR: Neovim minimal configuration to only use what's really useful to my
+> workflow.
 >
 > Update: With Neovim 0.12+ I ditched lazy.nvim plugin manager and
 > I've started using the builtin package manager.
@@ -60,12 +60,17 @@ his nice guide about Neovim setup in 2026 and explaining the virtues of Neovim
 
 - **Neovim 0.12+**
 - **`git`** — plugin manager fetches plugins via git
+- **`luarocks` - A lua package manager
 - **`ripgrep` (`rg`)** — Telescope uses it for `find_files` and `live_grep`
 - **`make` + a C compiler (`gcc` or `clang`)** — needed to compile the `telescope-fzf-native` C extension on first install/update
 - **A Nerd Font** — `blink.cmp` and `mini.icons` render glyphs from a Nerd Font; install one (e.g. [JetBrainsMono Nerd Font](https://www.nerdfonts.com/)) and set it in your terminal emulator
 - **`lazygit`** — For git management
 - **`opencode`** - AI agent integrated into Neovim
 - **`Node.js`** — required at runtime by `bashls` and `ts_ls`; install via `nvm` or your system package manager.
+
+> [!IMPORTANT]
+> Don't forget to use `:checkhealth` to check that there's no errors in your
+> Neovim installation
 
 ### Language tooling (external)
 
