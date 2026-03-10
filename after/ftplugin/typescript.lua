@@ -15,4 +15,3 @@ vim.opt_local.shiftwidth = 2
 
 -- Number of spaces a <Tab> counts for while performing editing operations
 vim.opt_local.softtabstop = 2
-

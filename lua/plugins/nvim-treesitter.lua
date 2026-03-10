@@ -1,51 +1,51 @@
 vim.pack.add({
-    {
-        src = "https://github.com/nvim-treesitter/nvim-treesitter",
-        version = "main",
-        build = ":TSUpdate",
-    }
+	{
+		src = "https://github.com/nvim-treesitter/nvim-treesitter",
+		version = "main",
+		build = ":TSUpdate",
+	},
 })
 
 -- Install parsers, check list here:
 -- https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
-local treesitter = require('nvim-treesitter')
+local treesitter = require("nvim-treesitter")
 -- Load treesitter, without this call some things
 -- like folding will not work
 treesitter.setup({})
 treesitter.install({
-    'lua',
-    'python',
-    'go',
-    'gotmpl',
-    'rust',
-    'typescript',
-    'javascript',
-    'bash',
-    'zsh',
-    'html',
-    'helm',
-    'terraform',
-    'dockerfile',
-    'json',
-    'yaml',
-    'vim',
-    'vimdoc',
+	"lua",
+	"python",
+	"go",
+	"gotmpl",
+	"rust",
+	"typescript",
+	"javascript",
+	"bash",
+	"zsh",
+	"html",
+	"helm",
+	"terraform",
+	"dockerfile",
+	"json",
+	"yaml",
+	"vim",
+	"vimdoc",
 })
 
 -- Enable TreeSitter highlight ,indentation and folding
 local group = vim.api.nvim_create_augroup("TreeSitterConfig", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-    group = group,
-    callback = function(args)
-        -- Attempt to start highlighting natively
-        if pcall(vim.treesitter.start, args.buf) then
-            -- If successful (parser exists), enable treesitter indentation
-            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-            -- Use TreeSitter folding
-            vim.opt_local.foldmethod = "expr"
-            vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-        end
-    end,
+	group = group,
+	callback = function(args)
+		-- Attempt to start highlighting natively
+		if pcall(vim.treesitter.start, args.buf) then
+			-- If successful (parser exists), enable treesitter indentation
+			vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			-- Use TreeSitter folding
+			vim.opt_local.foldmethod = "expr"
+			vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		end
+	end,
 })
 
 -- =========================================
@@ -54,14 +54,14 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Set filetype for helm files
 vim.filetype.add({
-    extension = {
-        gotmpl = 'gotmpl',
-    },
-    pattern = {
-        [".*/templates/.*%.tpl"] = "helm",
-        [".*/templates/.*%.ya?ml"] = "helm",
-        ["helmfile.*%.ya?ml"] = "helm",
-    },
+	extension = {
+		gotmpl = "gotmpl",
+	},
+	pattern = {
+		[".*/templates/.*%.tpl"] = "helm",
+		[".*/templates/.*%.ya?ml"] = "helm",
+		["helmfile.*%.ya?ml"] = "helm",
+	},
 })
 
 -- Monkey patch to fix folding in helm files:
@@ -75,20 +75,20 @@ vim.filetype.add({
 -- the entire buffer, keeping all folds consistent.
 local helm_fold_group = vim.api.nvim_create_augroup("HelmFoldRefresh", { clear = true })
 vim.api.nvim_create_autocmd("BufWinEnter", {
-    group = helm_fold_group,
-    pattern = {
-        "*/templates/*.yaml",
-        "*/templates/*.yml",
-        "*/templates/*.tpl",
-        "helmfile*.yaml",
-        "helmfile*.yml",
-    },
-    callback = function()
-        -- This function execute the command after some time have passed
-        -- because treesitter must be completely initialized before refreshing
-        -- the foldings
-        vim.defer_fn(function()
-            vim.cmd("normal! zx") -- zx refresh all folds in the current buffer
-        end, 350)
-    end,
+	group = helm_fold_group,
+	pattern = {
+		"*/templates/*.yaml",
+		"*/templates/*.yml",
+		"*/templates/*.tpl",
+		"helmfile*.yaml",
+		"helmfile*.yml",
+	},
+	callback = function()
+		-- This function execute the command after some time have passed
+		-- because treesitter must be completely initialized before refreshing
+		-- the foldings
+		vim.defer_fn(function()
+			vim.cmd("normal! zx") -- zx refresh all folds in the current buffer
+		end, 350)
+	end,
 })
