@@ -1,6 +1,7 @@
 vim.pack.add({
     -- dependencies
     "https://github.com/mason-org/mason.nvim",           -- for installing LSPs
+    "https://github.com/b0o/SchemaStore.nvim",           -- for JSON and YAML schemas
     "https://github.com/mason-org/mason-lspconfig.nvim", -- automatically enable and install LSPs
     "https://github.com/stevearc/conform.nvim",          -- format the code
     "https://github.com/mfussenegger/nvim-lint",         -- lint code
@@ -147,7 +148,7 @@ require("mason-lspconfig").setup({
         "bashls",
         "ts_ls", -- typescript
         "jsonls",
-        -- "gopls",
+        "yamlls",
         "helm_ls",
         "tofu_ls",
         "tflint",
