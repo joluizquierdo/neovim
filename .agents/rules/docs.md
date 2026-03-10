@@ -13,6 +13,7 @@ Update `README.md` when:
 
 Do **not** bloat the README. It must stay minimal:
 - Short intro + requirements + install steps
+- keep requirements always up to date
 - Usage quick-reference table
 - Tiny table with the programming languages supported with their formatters and
 linters

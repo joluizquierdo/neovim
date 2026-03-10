@@ -152,13 +152,13 @@ require("mason-lspconfig").setup({
 		"helm_ls",
 		"tofu_ls",
 		"tflint",
-		-- Linters
-		--
-		-- Formatters
-		-- Many of them must be manually installed...
-		-- Check :Mason
 	},
 })
+
+-- WARNING:
+-- Formatters and linters MUST be installed externally
+-- either globally using brew, cargo, npm...
+-- or individually per project
 
 -- =========================================
 -- Configure conform.nvim (Formatting)
@@ -186,17 +186,7 @@ conform.setup({
 		terraform = { "tofu_fmt" },
 		tf = { "tofu_fmt" },
 		terraform_vars = { "tofu_fmt" },
-		-- WARNING:
-		-- stylua must be installed manually with either
-		-- Mason:
-		--      :MasonInstall stylua
-		-- Externally with your project dev dependencies or globally
 		lua = { "stylua" },
-		-- WARNING:
-		-- Prettier must be installed manually with either
-		-- Mason:
-		--      :MasonInstall prettier
-		-- Externally with your project dev dependencies
 		javascript = { "prettier" },
 		typescript = { "prettier" },
 	},
