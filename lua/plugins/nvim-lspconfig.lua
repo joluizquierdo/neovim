@@ -150,6 +150,7 @@ require("mason-lspconfig").setup({
         "helm_ls",
         "tofu_ls",
         "tflint",
+        "yamlls"
         -- Linters
         --
         -- Formatters
