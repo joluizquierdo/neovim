@@ -192,6 +192,13 @@ conform.setup({
 		--      :MasonInstall stylua
 		-- Externally with your project dev dependencies or globally
 		lua = { "stylua" },
+		-- WARNING:
+		-- Prettier must be installed manually with either
+		-- Mason:
+		--      :MasonInstall prettier
+		-- Externally with your project dev dependencies
+		javascript = { "prettier" },
+		typescript = { "prettier" },
 	},
 	format_on_save = function(bufnr)
 		-- Disable with a global or buffer-local variable
@@ -220,6 +227,8 @@ local lint = require("lint")
 lint.linters_by_ft = {
 	terraform = { "tflint", "tfsec" },
 	tf = { "tflint", "tfsec" },
+	typescript = { "eslint" },
+	javascript = { "eslint" },
 }
 
 -- Native autocommand to trigger linting on file enter, save, and exit insert mode
