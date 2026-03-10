@@ -67,6 +67,26 @@ his nice guide about Neovim setup in 2026 and explaining the virtues of Neovim
 - **`opencode`** - AI agent integrated into Neovim
 - **`Node.js`** — required at runtime by `bashls` and `ts_ls`; install via `nvm` or your system package manager.
 
+### Language tooling (external)
+
+> [!NOTE]
+> Mason manages LSP, formatters and linters.
+> However, I recommend using mason to exclusively install LSPs. Mason don't
+> expose those utilities to the shell `$PATH`. And some of them can't be
+> automatically install, and you will require to use `:MasonInstall <linter>`
+> Therefore, formatters and linters should be installed
+> externally to be available on `$PATH` (or as project-local `node_modules/.bin`
+> binaries for npm tools).
+
+| Tool | Purpose | Install |
+|------|---------|---------|
+| `stylua` | Lua formatter | `brew install stylua` or `cargo install stylua` |
+| `prettier` | JS/TS formatter | `brew install prettier` or `npm i -g prettier` or `npm i -D prettier` |
+| `eslint` | JS/TS linter | `npm i -g eslint` or `npm i -D eslint` |
+| `opentofu` | Terraform formatter (`tofu_fmt`) | `brew install opentofu` |
+| `tflint` | Terraform linter | `brew install tflint` |
+| `tfsec` | Terraform security linter | `brew install tfsec` |
+
 ## Installation
 
 ```bash
