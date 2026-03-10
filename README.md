@@ -121,16 +121,24 @@ Leader key is `<Space>`.
 
 ## Languages
 
-| Language | LSP | Formatter | Linter |
-|----------|-----|-----------|--------|
-| Lua | `lua_ls` | `stylua` | — |
-| Rust | `rust_analyzer` | — | — |
-| Bash | `bashls` | — | — |
-| TypeScript / JavaScript | `ts_ls` | `prettier` | `eslint` |
-| JSON | `jsonls` | — | — |
-| YAML | `yamlls` | — | — |
-| Helm | `helm_ls` | — | — |
-| Terraform / OpenTofu | `tofu_ls` | `tofu_fmt` | `tflint`, `tfsec` |
+Languages are supported through a combination of Treesitter (syntax highlighting, indentation, folding), LSP (diagnostics, go-to-definition, etc.), formatters (conform.nvim), and linters (nvim-lint).
+
+| Language | Treesitter | LSP | Formatter | Linter |
+|----------|-----------|-----|-----------|--------|
+| Lua | ✓ | `lua_ls` | `stylua` | — |
+| Rust | ✓ | `rust_analyzer` | — | — |
+| Go | ✓ | — | — | — |
+| Python | ✓ | — | — | — |
+| Bash | ✓ | `bashls` | — | — |
+| Zsh | ✓ | — | — | — |
+| TypeScript / JavaScript | ✓ | `ts_ls` | `prettier` | `eslint` |
+| HTML | ✓ | — | — | — |
+| JSON | ✓ | `jsonls` | — | — |
+| YAML | ✓ | `yamlls` | — | — |
+| Helm / Go templates | ✓ | `helm_ls` | — | — |
+| Terraform / OpenTofu | ✓ | `tofu_ls` | `tofu_fmt` | `tflint`, `tfsec` |
+| Dockerfile | ✓ | — | — | — |
+| Vim / Vimdoc | ✓ | — | — | — |
 
 ---
 

@@ -8,15 +8,14 @@ Whenever you add or modify code in this repository, you **must** update the foll
 
 Update `README.md` when:
 - A new plugin is added or removed → update the repository structure table and, if relevant, the Usage section.
-- A new language is supported → no change needed (the "Adding a language" guide is generic).
+- A new language is supported → update the **Languages** table (Treesitter, LSP, Formatter, Linter columns).
 - The installation or requirements change (e.g., a new system dependency is needed).
 
 Do **not** bloat the README. It must stay minimal:
 - Short intro + requirements + install steps
 - keep requirements always up to date
 - Usage quick-reference table
-- Tiny table with the programming languages supported with their formatters and
-linters
+- Languages table (one row per language: Treesitter ✓/—, LSP server, Formatter, Linter)
 - Repository structure (one line per file)
 - "Adding support for a new language" section (the only in-depth section)
 
