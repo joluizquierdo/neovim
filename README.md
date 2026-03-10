@@ -84,6 +84,7 @@ Run `:pack update` at any time to update plugins to their latest revisions.
 | See all keymaps | `<Space>?` (which-key, buffer-local) |
 | Full cheatsheet | see [CHEATSHEET.md](CHEATSHEET.md) |
 | Format current file | `<Space>cf` |
+| Toggle format on save | `<Space>tf` |
 | Open file tree | `<Space>pv` |
 | Fuzzy find files | `<Space>pf` |
 | Open LazyGit | `<Space>gg` |
@@ -93,34 +94,54 @@ Leader key is `<Space>`.
 
 ---
 
+## Languages
+
+| Language | LSP | Formatter | Linter |
+|----------|-----|-----------|--------|
+| Lua | `lua_ls` | `stylua` | — |
+| Rust | `rust_analyzer` | — | — |
+| Bash | `bashls` | — | — |
+| TypeScript / JavaScript | `ts_ls` | `prettier` | `eslint` |
+| JSON | `jsonls` | — | — |
+| YAML | `yamlls` | — | — |
+| Helm | `helm_ls` | — | — |
+| Terraform / OpenTofu | `tofu_ls` | `tofu_fmt` | `tflint`, `tfsec` |
+
+---
+
 ## Repository Structure
 
 ```
 .
-├── init.lua                   # Entry point — loads config, plugins, utils in order
+├── init.lua                   # Entry point — loads config and plugins in order
 ├── nvim-pack-lock.json        # Lockfile: pins every plugin to a specific git revision
 ├── .luarc.json                # lua-language-server workspace configuration
+├── after/
+│   └── ftplugin/
+│       ├── helm.lua           # 2-space indent override for Helm
+│       ├── javascript.lua     # 2-space indent override for JavaScript
+│       ├── lua.lua            # 2-space indent override for Lua
+│       └── typescript.lua     # 2-space indent override for TypeScript
 └── lua/
     ├── config/
     │   ├── options.lua        # Editor settings (tabs, line numbers, search, etc.)
     │   ├── keymaps.lua        # Global keymaps and leader key definition
     │   └── autocmds.lua       # Autocommands (yank highlight, cursor restore, etc.)
-    ├── plugins/
-    │   ├── init.lua           # Requires every plugin file in load order
-    │   ├── blink-cmp.lua      # Autocompletion (blink.cmp)
-    │   ├── gitsigns.lua       # Git hunk indicators in the sign column
-    │   ├── harpoon.lua        # File bookmarks (harpoon2)
-    │   ├── kanagawa.lua       # Colorscheme
-    │   ├── mininvim.lua       # mini.nvim: ai, surround, pairs, comment, trailspace, notify, icons
-    │   ├── nvim-lspconfig.lua # LSP client config + Mason installer + conform.nvim + nvim-lint
-    │   ├── nvim-treesitter.lua# Syntax highlighting, indentation, and folding
-    │   ├── opencode.lua       # AI coding agent (opencode.nvim)
-    │   ├── snacks.lua         # Terminal, LazyGit overlay, input, picker
-    │   ├── telescope.lua      # Fuzzy finder
-    │   ├── undotree.lua       # Visual undo history
-    │   └── which-key.lua      # Keymap discovery popup
-    └── utils/
-        └── statusline.lua     # Custom statusline — pure Lua, no plugin dependency
+    └── plugins/
+        ├── init.lua           # Requires every plugin file in load order
+        ├── blink-cmp.lua      # Autocompletion (blink.cmp)
+        ├── gitsigns.lua       # Git hunk indicators in the sign column
+        ├── harpoon.lua        # File bookmarks (harpoon2)
+        ├── kanagawa.lua       # Colorscheme
+        ├── lualine.lua        # Status line (lualine.nvim + nvim-web-devicons)
+        ├── mininvim.lua       # mini.nvim: ai, surround, pairs, comment, trailspace, notify, icons
+        ├── nvim-lspconfig.lua # LSP client config + Mason installer + conform.nvim + nvim-lint
+        ├── nvim-treesitter.lua# Syntax highlighting, indentation, and folding
+        ├── opencode.lua       # AI coding agent (opencode.nvim)
+        ├── snacks.lua         # Terminal, LazyGit overlay, input, picker
+        ├── telescope.lua      # Fuzzy finder
+        ├── undotree.lua       # Visual undo history
+        └── which-key.lua      # Keymap discovery popup
 ```
 
 ---

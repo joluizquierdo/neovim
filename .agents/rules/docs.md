@@ -14,6 +14,8 @@ Update `README.md` when:
 Do **not** bloat the README. It must stay minimal:
 - Short intro + requirements + install steps
 - Usage quick-reference table
+- Tiny table with the programming languages supported with their formatters and
+linters
 - Repository structure (one line per file)
 - "Adding support for a new language" section (the only in-depth section)
 

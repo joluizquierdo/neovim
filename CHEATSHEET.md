@@ -222,6 +222,7 @@ Leader key: `<Space>`
 | `<Space>tb` | n | Toggle inline git blame |
 | `<Space>tw` | n | Toggle word diff |
 | `<Space>tg` | n | Toggle git signs |
+| `<Space>tf` | n | Toggle format on save (current buffer) |
 | `<Space>u`  | n | Toggle undotree |
 
 ## Harpoon
