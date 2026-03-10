@@ -146,11 +146,11 @@ require("mason-lspconfig").setup({
         "rust_analyzer",
         "bashls",
         "ts_ls", -- typescript
+        "jsonls",
         -- "gopls",
         "helm_ls",
         "tofu_ls",
         "tflint",
-        "yamlls"
         -- Linters
         --
         -- Formatters
