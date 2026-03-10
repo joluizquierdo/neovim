@@ -11,6 +11,3 @@ end
 
 -- Plugins
 require("plugins")
-
--- Utils
-require("utils.statusline")

@@ -4,11 +4,15 @@ require("plugins.kanagawa")
 -- snacks and lazygit
 require("plugins.snacks")
 
--- Collection of +40 plugins to improve nvim experience
-require("plugins.mininvim")
-
 -- Show git signs
 require("plugins.gitsigns")
+
+-- Collection of +40 plugins to improve nvim experience
+-- NOTE: You can select the ones that you want to use...
+require("plugins.mininvim")
+
+-- status line with minimal configuration
+require("plugins.lualine")
 
 -- Fuzzy find project files
 require("plugins.telescope")
