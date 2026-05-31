@@ -161,6 +161,17 @@ require("mason-lspconfig").setup({
 -- or individually per project
 
 -- =========================================
+-- Configure rust_analyzer
+-- =========================================
+vim.lsp.config('rust_analyzer', {
+	settings = {
+		["rust-analyzer"] = {
+			cargo = { features = "all" },
+		},
+	},
+})
+
+-- =========================================
 -- Configure conform.nvim (Formatting)
 -- =========================================
 vim.api.nvim_create_user_command("FormatToggle", function()
