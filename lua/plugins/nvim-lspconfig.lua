@@ -152,6 +152,8 @@ require("mason-lspconfig").setup({
 		"helm_ls",
 		"tofu_ls",
 		"tflint",
+		"dockerls",
+		"docker_compose_language_service",
 	},
 })
 
@@ -163,7 +165,7 @@ require("mason-lspconfig").setup({
 -- =========================================
 -- Configure rust_analyzer
 -- =========================================
-vim.lsp.config('rust_analyzer', {
+vim.lsp.config("rust_analyzer", {
 	settings = {
 		["rust-analyzer"] = {
 			cargo = { features = "all" },
@@ -230,6 +232,7 @@ lint.linters_by_ft = {
 	tf = { "tflint", "tfsec" },
 	typescript = { "eslint" },
 	javascript = { "eslint" },
+	dockerfile = { "hadolint" },
 }
 
 -- Native autocommand to trigger linting on file enter, save, and exit insert mode
