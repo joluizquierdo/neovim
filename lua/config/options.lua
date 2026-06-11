@@ -2,10 +2,10 @@ vim.opt.number = true -- Enable line numbers
 vim.opt.relativenumber = true -- relative numbers
 vim.opt.cursorline = true -- higlight current line
 
-vim.opt.tabstop = 4 -- Display actuals \t as 4 spaces in the screen
-vim.opt.shiftwidth = 4 -- Using '>', '<' or '=' when editing a buffer adds spaces instead of \t
-vim.opt.softtabstop = 4 -- Tab/Backsapce in Insert mode moves 4 spaces
-vim.opt.expandtab = true -- Tab key insert 4 spaces instead of \t
+vim.opt.tabstop = 2 -- Display actuals \t as 4 spaces in the screen
+vim.opt.shiftwidth = 2 -- Using '>', '<' or '=' when editing a buffer adds spaces instead of \t
+vim.opt.softtabstop = 2 -- Tab/Backsapce in Insert mode moves 4 spaces
+vim.opt.expandtab = true -- Tab key insert 2 spaces instead of \t
 
 vim.opt.smartindent = true -- Try using smart indent if treesitter indenting is not available
 
