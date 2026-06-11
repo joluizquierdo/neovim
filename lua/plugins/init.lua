@@ -11,9 +11,6 @@ require("plugins.gitsigns")
 -- NOTE: You can select the ones that you want to use...
 require("plugins.mininvim")
 
--- status line with minimal configuration
-require("plugins.lualine")
-
 -- Fuzzy find project files
 require("plugins.telescope")
 
@@ -38,3 +35,6 @@ require("plugins.blink-cmp")
 
 -- AI agent integration
 require("plugins.opencode")
+
+-- status line with minimal configuration
+require("plugins.lualine")
