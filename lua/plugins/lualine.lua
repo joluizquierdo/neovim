@@ -1,6 +1,6 @@
 vim.pack.add({
 	-- Dependencies
-	"nvim-tree/nvim-web-devicons",
+	"https://github.com/nvim-tree/nvim-web-devicons",
 	-- Plugin
 	"https://github.com/nvim-lualine/lualine.nvim",
 })
