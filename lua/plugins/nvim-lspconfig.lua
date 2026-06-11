@@ -147,6 +147,9 @@ require("mason-lspconfig").setup({
 		"rust_analyzer",
 		"bashls",
 		"ts_ls", -- typescript
+		"html",
+		"cssls",
+		"astro",
 		"jsonls",
 		"yamlls",
 		"helm_ls",
@@ -171,6 +174,14 @@ vim.lsp.config("rust_analyzer", {
 			cargo = { features = "all" },
 		},
 	},
+})
+
+-- =========================================
+-- Configure astro
+-- =========================================
+vim.lsp.config("astro", {
+	filetypes = { "astro" },
+	-- other settings...
 })
 
 -- =========================================
