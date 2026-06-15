@@ -10,12 +10,17 @@ require("mini.ai").setup({})
 -- Surround
 require("mini.surround").setup({
 	-- Number of lines within which surrounding is searched
-	n_lines = 200,
 	mappings = {
 		add = "ys",
 		delete = "ds",
 		replace = "cs",
+		find = "sf",
+		find_left = "sF",
+		highlight = "sh", -- Highlight surrounding
 	},
+	highlight_duration = 1000,
+	n_lines = 10,
+	search_method = "cover_or_nearest",
 })
 
 -- Remap adding surrounding to Visual mode selection

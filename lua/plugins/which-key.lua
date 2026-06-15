@@ -8,6 +8,7 @@ require("which-key").setup({
 		{ "<leader>h", group = "harpoon" },
 		{ "<leader>g", group = "git" },
 		{ "<leader>o", group = "opencode" },
+		{ "<leader>os", group = "session" },
 		{ "<leader>p", group = "project" },
 		{ "<leader>q", group = "quit" },
 		{ "<leader>b", group = "buffer" },

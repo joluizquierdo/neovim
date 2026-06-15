@@ -150,6 +150,7 @@ require("mason-lspconfig").setup({
 		"html",
 		"cssls",
 		"astro",
+		"tailwindcss",
 		"jsonls",
 		"yamlls",
 		"helm_ls",
@@ -177,7 +178,7 @@ vim.lsp.config("rust_analyzer", {
 })
 
 -- =========================================
--- Configure astro
+-- Configure rust_analyze
 -- =========================================
 vim.lsp.config("astro", {
 	filetypes = { "astro" },
@@ -253,4 +254,28 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 	callback = function()
 		lint.try_lint()
 	end,
+})
+
+-- =========================================
+-- Configure tailwindcss
+-- =========================================
+vim.lsp.config("tailwindcss", {
+	-- Activate on all file types where you use Tailwind
+	filetypes = {
+		"html",
+		"css",
+		"javascript",
+		"typescript",
+		"javascriptreact",
+		"typescriptreact",
+		"astro",
+	},
+	settings = {
+		tailwindCSS = {
+			-- Tells the server where to look for class attributes
+			classAttributes = { "class", "className", "class:list" },
+			-- Validate class names against your Tailwind config
+			validate = true,
+		},
+	},
 })

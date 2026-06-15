@@ -245,6 +245,8 @@ Leader key: `<Space>`
 | `<Space>om` | n/x | Select opencode action |
 | `<Space>or` | n/x | Add range to opencode (operator) |
 | `<Space>ol` | n | Add current line to opencode |
+| `<Space>oc` | n | Cycle opencode agent forward |
+| `<Space>oC` | n | Cycle opencode agent backward |
 | `<Space>ou` | n | Scroll opencode panel up |
 | `<Space>od` | n | Scroll opencode panel down |
 | `<Space>oi` | n | Interrupt opencode session |
