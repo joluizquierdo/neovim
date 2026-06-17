@@ -158,6 +158,13 @@ Leader key: `<Space>`
 | `q:` | n | Open command history window |
 | `q/` | n | Open search history window |
 
+## Terminal
+
+| Key | Mode | Description |
+|-----|------|-------------|
+| `<Esc>` | t | Return to normal mode |
+| `<A-[>` | t | Send literal Escape key to terminal |
+
 ## Surround (mini.surround)
 
 | Key | Mode | Description |

@@ -36,6 +36,14 @@ vim.keymap.set({ "n", "v" }, "<leader>D", '"_d', { desc = "Delete without saving
 -- and then press 'C-c'
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
+-- Send ESC to shell with Alt-[
+vim.keymap.set("t", "<A-[>", "<Esc>")
+
+--- When in a terminal pressing Esc will actually work to return you
+--- to Normal mode instead of sending 'Esc' to the terminal
+--- To send a literal 'Esc' to the terminal, use Alt+[
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+
 vim.keymap.set("n", "Q", "<nop>")
 
 -- Replace current word in all the file
