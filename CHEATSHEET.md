@@ -172,8 +172,8 @@ Leader key: `<Space>`
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `gd` | n | Go to declaration |
-| `gD` | n | Go to definition |
+| `gd` | n | Go to definition |
+| `gD` | n | Go to declaration |
 | `gS` | n | Go to definition in vertical split |
 | `K` | n | Hover documentation |
 | `<C-k>` | n | Signature help |
@@ -250,3 +250,12 @@ Leader key: `<Space>`
 | `<Space>ou` | n | Scroll opencode panel up |
 | `<Space>od` | n | Scroll opencode panel down |
 | `<Space>oi` | n | Interrupt opencode session |
+
+## AI Session Management (opencode.nvim)
+
+| Key | Mode | Description |
+|-----|------|-------------|
+| `<Space>oss` | n | List opencode sessions |
+| `<Space>osn` | n | Create new opencode session |
+| `<Space>osu` | n | Undo opencode session changes |
+| `<Space>osr` | n | Redo opencode session changes |

@@ -62,10 +62,10 @@ local function lsp_on_attach(ev)
 	end
 
 	opts.desc = "Go to declaration"
-	vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
 	opts.desc = "Go to definition"
-	vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 
 	opts.desc = "Go to definition in vsplit"
 	vim.keymap.set("n", "gS", function()
