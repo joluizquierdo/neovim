@@ -41,6 +41,7 @@ vim.keymap.set(...)
 | `harpoon.lua` | harpoon (harpoon2) | File bookmarks |
 | `kanagawa.lua` | kanagawa.nvim | Colorscheme |
 | `mininvim.lua` | mini.nvim | ai, surround, pairs, comment, trailspace |
+| `nvim-dap.lua` | nvim-dap | Debugger (DAP client + codelldb adapter) |
 | `nvim-lspconfig.lua` | nvim-lspconfig + mason + conform.nvim + nvim-lint | LSP, format, lint |
 | `nvim-treesitter.lua` | nvim-treesitter | Highlight, indent, fold |
 | `opencode.lua` | opencode.nvim | AI coding agent |

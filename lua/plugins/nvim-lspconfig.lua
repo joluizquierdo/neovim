@@ -49,7 +49,7 @@ local function lsp_on_attach(ev)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 	if client:supports_method("textDocument/codeAction", bufnr) then
 		opts.desc = "LSP Organize imports"
-		vim.keymap.set("n", "<leader>co", function()
+		vim.keymap.set("n", "<leader>lo", function()
 			vim.lsp.buf.code_action({
 				context = { only = { "source.organizeImports" }, diagnostics = {} },
 				apply = true,
@@ -142,15 +142,19 @@ vim.api.nvim_create_autocmd("LspAttach", { group = augroup, callback = lsp_on_at
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		-- LSP
+		-- lua
 		"lua_ls",
+		-- rust
 		"rust_analyzer",
+		-- shell
 		"bashls",
-		"ts_ls", -- typescript
+		-- web
+		"ts_ls",
 		"html",
 		"cssls",
 		"astro",
 		"tailwindcss",
+		-- infra
 		"jsonls",
 		"yamlls",
 		"helm_ls",

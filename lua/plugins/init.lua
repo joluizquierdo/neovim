@@ -1,6 +1,9 @@
 -- color scheme Should be loaded before other plugins
 require("plugins.kanagawa")
 
+-- Show a nice menu when pressing leader key
+require("plugins.which-key")
+
 -- snacks and lazygit
 require("plugins.snacks")
 
@@ -20,9 +23,6 @@ require("plugins.harpoon")
 -- Manage modification history within a file
 require("plugins.undotree")
 
--- Show a nice menu when pressing leader key
-require("plugins.which-key")
-
 -- Make neovim better understand and navigate the code
 -- improve folding, indentation and highlight
 require("plugins.nvim-treesitter")
@@ -38,3 +38,6 @@ require("plugins.opencode")
 
 -- status line with minimal configuration
 require("plugins.lualine")
+
+-- Debugging support
+require("plugins.nvim-dap")

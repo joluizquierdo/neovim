@@ -167,14 +167,15 @@ Languages are supported through a combination of Treesitter (syntax highlighting
         ├── harpoon.lua        # File bookmarks (harpoon2)
         ├── kanagawa.lua       # Colorscheme
         ├── lualine.lua        # Status line (lualine.nvim + nvim-web-devicons)
-        ├── mininvim.lua       # mini.nvim: ai, surround, pairs, comment, trailspace, notify, icons
-        ├── nvim-lspconfig.lua # LSP client config + Mason installer + conform.nvim + nvim-lint
-        ├── nvim-treesitter.lua# Syntax highlighting, indentation, and folding
-        ├── opencode.lua       # AI coding agent (opencode.nvim)
-        ├── snacks.lua         # Terminal, LazyGit overlay, input, picker
-        ├── telescope.lua      # Fuzzy finder
-        ├── undotree.lua       # Visual undo history
-        └── which-key.lua      # Keymap discovery popup
+         ├── mininvim.lua       # mini.nvim: ai, surround, pairs, comment, trailspace, notify, icons
+         ├── nvim-lspconfig.lua # LSP client config + Mason installer + conform.nvim + nvim-lint
+         ├── nvim-treesitter.lua# Syntax highlighting, indentation, and folding
+         ├── opencode.lua       # AI coding agent (opencode.nvim)
+         ├── snacks.lua         # Terminal, LazyGit overlay, input, picker
+         ├── telescope.lua      # Fuzzy finder
+         ├── undotree.lua       # Visual undo history
+         ├── nvim-dap.lua       # Debugging (nvim-dap + codelldb + persistent-breakpoints)
+         └── which-key.lua      # Keymap discovery popup
 ```
 
 ---

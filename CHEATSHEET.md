@@ -186,8 +186,8 @@ Leader key: `<Space>`
 | `<C-k>` | n | Signature help |
 | `<Space>ca` | n | Code action |
 | `<Space>cr` | n | Rename symbol |
-| `<Space>co` | n | Organize imports |
 | `<Space>cf` | n/v | Format buffer (conform.nvim) |
+| `<Space>lo` | n | Organize imports |
 | `<Space>ld` | n | LSP: definitions (Telescope) |
 | `<Space>lr` | n | LSP: references (Telescope) |
 | `<Space>lt` | n | LSP: type definitions (Telescope) |
@@ -266,3 +266,17 @@ Leader key: `<Space>`
 | `<Space>osn` | n | Create new opencode session |
 | `<Space>osu` | n | Undo opencode session changes |
 | `<Space>osr` | n | Redo opencode session changes |
+
+## Debugging (nvim-dap)
+
+| Key | Mode | Description |
+|-----|------|-------------|
+| `<Space>cc` | n | Debug: continue / start session |
+| `<Space>cn` | n | Debug: step over |
+| `<Space>ci` | n | Debug: step into |
+| `<Space>co` | n | Debug: step out |
+| `<Space>cb` | n | Debug: toggle breakpoint |
+| `<Space>cB` | n | Debug: conditional breakpoint |
+| `<Space>cX` | n | Debug: clear all breakpoints |
+| `<Space>ct` | n | Debug: terminate session |
+| `<Space>ce` | n | Debug: open REPL |
