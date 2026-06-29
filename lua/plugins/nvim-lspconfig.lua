@@ -190,6 +190,53 @@ vim.lsp.config("astro", {
 })
 
 -- =========================================
+-- Configure yamlls (YAML Language Server)
+-- =========================================
+vim.lsp.config("yamlls", {
+	settings = {
+		yaml = {
+			-- Use SchemaStore.nvim for schema catalog.
+			-- Disable built-in schemaStore to avoid conflicts.
+			schemaStore = {
+				enable = false,
+				-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+				url = "",
+			},
+			schemas = require("schemastore").yaml.schemas(),
+			validate = true,
+			completion = true,
+			hover = true,
+		},
+		redhat = {
+			telemetry = { enabled = false },
+		},
+	},
+})
+
+-- =========================================
+-- Configure helm_ls (Helm Language Server)
+-- =========================================
+-- helm_ls internally delegates YAML validation/completion to yamlls.
+-- Setting the kubernetes schema for templates/** provides K8s autocompletion.
+vim.lsp.config("helm_ls", {
+	settings = {
+		["helm-ls"] = {
+			yamlls = {
+				enabled = true,
+				path = "yaml-language-server",
+				config = {
+					schemas = {
+						kubernetes = "templates/**",
+					},
+					completion = true,
+					hover = true,
+				},
+			},
+		},
+	},
+})
+
+-- =========================================
 -- Configure conform.nvim (Formatting)
 -- =========================================
 vim.api.nvim_create_user_command("FormatToggle", function()
